@@ -1,0 +1,33 @@
+/* intro.css */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+   
+}
+
+.intro-content {
+    border: 1px solid green;
+    max-width: 50%; 
+    padding: 20px;
+}
+
+.imageCard {
+    background-color: #3d3d3d;  
+    max-width: 40%; 
+    border-radius: 100%; 
+   
+}
+
+.bg {
+    width: 100%;
+    border-radius: 10px; 
+    display: block; 
+    border-radius: 100%; 
+    border: 2px solid white;
+}
+
+.h2{
+    font-size: 20px;
+}
