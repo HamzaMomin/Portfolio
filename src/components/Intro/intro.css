@@ -8,7 +8,7 @@
 }
 
 .intro-content {
-    border: 1px solid green;
+    
     max-width: 50%; 
     padding: 20px;
 }
@@ -30,4 +30,32 @@
 
 .h2{
     font-size: 20px;
+}
+.introName{
+    color: yellow;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+.Intro-Web{
+    color: rgb(193, 193, 255);
+    font-size: 20px;
+    font-family: Cambria;
+}
+
+.intropara{
+    color: rgb(193, 193, 255);
+    font-size: 15px;
+    font-family: Cambria;
+}
+
+.btn{
+        width: 150px;
+        height: 50px;
+        color: rgb(39, 39, 58);
+        border: 2px solid rgb(193, 193, 255);
+        font-size: 20px;
+        background-color: azure;
+        font-weight: bold;
+        border-radius: 50px;
+        margin-left: 100px;
 }
