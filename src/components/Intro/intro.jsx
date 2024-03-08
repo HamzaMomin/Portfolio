@@ -7,7 +7,7 @@ import './intro.css';
 const Intro = () => {
     return (
 
-        <section>
+        <section className="sec">
         <div className="container">
             <div className="intro-content">
                 <h2 className="h2">Hello,</h2>

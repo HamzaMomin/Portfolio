@@ -4,20 +4,36 @@ import NavBar from './components/navbar'
 import Intro from './components/Intro/intro'
 import Edu from './components/Education/edu'
 import Exp from './components/Experience/exp'
+import Projects from './components/Projects/projects'
+import Skills from './components/Skills/skills'
+import Certs from './components/Certifications/certs'
+
 function App() {
-  
+
 
   return (
-    
-      <div>
-        
+
+    <div>
+
       <NavBar />
+
       <Intro />
+      <hr />
       <Edu />
+      <hr />
       <Exp />
-      </div>
-     
-    
+      <hr />
+      <Projects />
+
+      <Skills />
+
+      <Certs />
+
+
+
+    </div>
+
+
   )
 }
 
