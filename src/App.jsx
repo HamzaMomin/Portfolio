@@ -7,6 +7,8 @@ import Exp from './components/Experience/exp'
 import Projects from './components/Projects/projects'
 import Skills from './components/Skills/skills'
 import Certs from './components/Certifications/certs'
+import Contact from './components/Contact Me/Contact'
+import Freelanc from './components/Experience/freelance'
 
 function App() {
 
@@ -18,16 +20,20 @@ function App() {
       <NavBar />
 
       <Intro />
-      <hr />
+      
       <Edu />
-      <hr />
+      
       <Exp />
-      <hr />
+      <hr/>
+      <Freelanc/>
+      <hr/>
       <Projects />
-
+     
       <Skills />
-
+   
       <Certs />
+      
+      <Contact />
 
 
 

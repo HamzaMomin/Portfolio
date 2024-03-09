@@ -19,8 +19,8 @@
   }
   
   .modalImage {
-    width: 200vh;
-    height: 200vh;
+    width: 250px;
+    height:  250px;;
     max-width: 400px; /* Adjust the max-width based on your design */
     height: auto;
     border-radius: 5px;

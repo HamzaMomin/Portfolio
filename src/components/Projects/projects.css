@@ -24,7 +24,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
     gap: 50px; /* Adjust the gap between images */
-    border: 3px solid blue;
+  
     max-width: 100vhpx; /* Adjust the max-width based on your design */
     margin-top: 20px; /* Add margin to separate from the heading */
     
@@ -32,10 +32,11 @@
   
   .workImage {
   
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
     object-fit: cover;
-    border: 2px solid red;
+    border:4px solid rgb(143, 143, 143);
+    border-radius: 50px;
   }
 
   

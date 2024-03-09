@@ -11,9 +11,9 @@ h3{
 }
 
 .exp-container{
-
+    
     margin-top: 5%;
-    height: 450px;
+    height: 500px;
     width: 160vh;
     background-color: #3d3d3d;  
     display: flex;
@@ -23,6 +23,8 @@ h3{
     border: 2px solid white;
 
 }
+
+
 
 section {
     height: 100vh; 
