@@ -6,6 +6,8 @@
     position: sticky;
    /* top: 0;
     z-index: 3;*/
+    padding-top: 1vh;
+   
   }
   
   .nav-list {
@@ -16,12 +18,19 @@
   }
   
   .nav-item {
-    color: white;
+    color: black;
     font-size: 20px;
     font-weight: bold;
+    font-family: poppins;
     text-decoration: none;
     cursor: pointer;
-    margin: 20px;
+    margin: 40px;
+    border: 5px solid black;
+    border-radius: 30px; 
+    background-color: white;
+    padding: 10px  40px;
+    box-shadow: 8px 4px 12px rgba(4, 0, 65, 0.4);
+   
   }
   
   .nav-item:hover {
@@ -29,6 +38,6 @@
   }
   .nav-item:active {
     color: rgb(173, 216, 230);
-    text-decoration: underline;
+ 
     
 }
