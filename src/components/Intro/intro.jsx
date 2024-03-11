@@ -6,6 +6,7 @@ const Intro = () => {
     return (
 
         <div className="container">
+          
             <div> <h2 className="heading">&lt;Hello World/&gt;</h2>
                 <p className="about"> I am a Front-End <br /> Developer and <br /> Pixel Artist. </p></div>
 
@@ -15,7 +16,7 @@ const Intro = () => {
                 
                 <p>Hamza Momin </p>
             </div>
-
+          
 
         </div>
 

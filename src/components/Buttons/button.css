@@ -1,0 +1,25 @@
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 120px;
+    height: 80px;
+
+    margin-bottom: 10%;
+
+    
+    background-color: white;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    align-items: center;
+
+}
+
+.img-git {
+
+    width: 40px;
+    height: 40px;
+}
