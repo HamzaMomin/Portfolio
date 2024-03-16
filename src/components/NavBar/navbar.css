@@ -35,10 +35,12 @@
   }
   
   .nav-item:hover {
-    color: rgb(173, 216, 230);
+    color: rgb(6, 51, 66);
+    border-color: #FFD600;
   }
   .nav-item:active {
-    color: rgb(173, 216, 230);
+
+    border-color: #FFD600;
  
     
 }
