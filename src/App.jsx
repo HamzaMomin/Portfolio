@@ -15,17 +15,25 @@ function App() {
     <div>
 
       <NavBar />
-      <div className='zocial' style={{width: 'auto ', position: 'absolute', left: -25, marginTop: 60, display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' , }}>
-      
-      <Button image={Github} />
-      <Button image={Linkedin}/>
-      <Button image={Email}/>
+      <div className='zocial' style={{
+        width: 'auto ', 
+        position: 'absolute',
+        left: -25, 
+        marginTop: 60, 
+        display: 'flex', 
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+      }}>
+
+        <Button image={Github} />
+        <Button image={Linkedin} />
+        <Button image={Email} />
 
 
       </div>
 
       <Intro />
-      
+
       {/* <Contact /> */}
 
 
