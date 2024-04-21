@@ -18,6 +18,10 @@
 
 }
 
+.btn:hover{
+    border: 5px solid yellow;
+}
+
 .img-git {
 
     width: 40px;
