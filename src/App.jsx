@@ -75,7 +75,7 @@ function App() {
             {currentScreen === "Experience" && <Experience isDarkBackground={isDarkBackground} />} {/* Show Contact screen */}
             {currentScreen === "Education" && <Education isDarkBackground={isDarkBackground} />}
 
-            <div className="flex justify-center items-end  translate-y-16 ">
+            <div className="flex justify-center items-end  translate-y-12">
                 <div className="hover:-translate-y-2 translate-y-[40px] duration-300 hover:rotate-12">
                     <CardsContainer
                         backgroundcolor="#A388EE"
