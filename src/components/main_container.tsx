@@ -8,7 +8,7 @@ function MainContainer({ isDarkBackground }) {
 
     <div className="flex justify-center items-center mt-12 ">
 
-      <motion.div className={`main-container z-10 sm-max:mt-16 md-range:mt-48 sm-max:w-[350px] sm-max:h-[300px] md-range:w-[900px] md-range:h-[370px] lg-range:w-[900px] lg-range:h-[370px] px-4 pt-4 bg-[#69D2E7] rounded-xl text-center border-[2px] border-black  shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${isDarkBackground ? "bg-card" : " bg-dark-card "}`}
+      <motion.div className={`main-container z-10 sm-max:mt-16 md-range:mt-48 sm-max:w-[350px] sm-max:h-[300px] md-range:w-[900px] md-range:h-[370px] lg-range:w-[900px] lg-range:h-[370px] xl-min:w-[900px] xl-min:h-[370px] 2xl:w-[900px] 2xl:h-[370px] xl-min:mt-[150px] 2xl:mt-[150px] px-4 pt-4 bg-[#69D2E7] rounded-xl text-center border-[2px] border-black  shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${isDarkBackground ? "bg-card" : " bg-dark-card "}`}
 
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}

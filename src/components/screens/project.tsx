@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import Project1 from "@/assets/Phostrack.png";
 import Project2 from "@/assets/App.png";
 import Project3 from "@/assets/Project3.png";
