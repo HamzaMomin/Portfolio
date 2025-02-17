@@ -1,6 +1,7 @@
 import React from "react";
 import ImageContainer from "./img/img_container";
 import { motion } from "motion/react"
+//@ts-ignore
 import Star from "@/assets/Star.svg";
 function MainContainer({ isDarkBackground }) {
 
