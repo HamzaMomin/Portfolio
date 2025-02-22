@@ -54,6 +54,15 @@ function App() {
             });
             
         }
+
+        else if (screen === "Let's Connect") {
+            setCardTitles({
+                card1: "Let's Connect",
+                card2: "About Me",
+                card3: "Experience",
+            });
+            
+        }
         setCurrentScreen(screen);
     };
 

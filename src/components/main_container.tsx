@@ -3,13 +3,15 @@ import ImageContainer from "./img/img_container";
 import { motion } from "motion/react"
 //@ts-ignore
 import Star from "@/assets/Star.svg";
+//@ts-ignore
+import BlackStar from "@/assets/BlackStar.svg";
 function MainContainer({ isDarkBackground }) {
 
   return (
 
     <div className="flex justify-center items-center mt-12 ">
       
-      <img alt="star" src={Star} className="w-[100px] absolute left-[190px] top-[10px] sm-max:w-[50px] sm-max:top-[90px] sm-max:left-[20px]" />
+      <img alt="star" src={Star} className="w-[100px] absolute left-[190px] top-[10px] sm-max:w-[50px] sm-max:top-[90px] sm-max:left-[20px] xl-min:left-[470px] xl-min:top-[110px] rotate-animation" />
       <motion.div className={`main-container z-10 sm-max:mt-16 md-range:mt-48 sm-max:w-[350px] sm-max:h-[300px] md-range:w-[900px] md-range:h-[370px] lg-range:w-[900px] lg-range:h-[370px] xl-min:w-[900px] xl-min:h-[370px] 2xl:w-[900px] 2xl:h-[370px] xl-min:mt-[100px] 2xl:mt-[100px] px-4 pt-4 bg-[#69D2E7] rounded-xl text-center border-[2px] border-black  shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${isDarkBackground ? "bg-card" : " bg-dark-card "}`}
 
         initial={{ opacity: 0, scale: 0 }}
@@ -43,12 +45,15 @@ function MainContainer({ isDarkBackground }) {
 
         </div>
 
-
+          
       </motion.div>
+          
+      <img alt="BlackStar" src={BlackStar} className="absolute  right-[80px] top-[250px] xl-min:right-[250px] xl-min:top-[280px] animate-pulse-rotate" />
+
 
     </div>
 
-
+            
 
   );
 
