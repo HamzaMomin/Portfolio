@@ -7,7 +7,7 @@ import Sun from "../../Portfolio/src/assets/Sun.svg";
 import Projects from "./components/screens/Project";
 import ContactUs from "./components/screens/contact";
 import Experience from "./components/screens/experience";
-import Education from "./components/screens/education";
+import Certifications from "./components/screens/Certifications";
 
 function App() {
     const [isDarkBackground, setIsDarkBackground] = useState(false);
@@ -17,6 +17,7 @@ function App() {
         card1: "Let's Connect",
         card2: "Projects",
         card3: "Experience",
+        
     });
 
     const toggleBackground = () => {
@@ -42,11 +43,11 @@ function App() {
             setCardTitles({
                 card1: "Let's Connect",
                 card2: "About Me",
-                card3: "Education",
+                card3: "Certifications",
             });
             
         }
-        else if (screen === "Education") {
+        else if (screen === "Certifications") {
             setCardTitles({
                 card1: "Let's Connect",
                 card2: "About Me",
@@ -82,7 +83,7 @@ function App() {
             {currentScreen === "Projects" && <Projects isDarkBackground={isDarkBackground} />}
             {currentScreen === "Let's Connect" && <ContactUs isDarkBackground={isDarkBackground} />} {/* Show Contact screen */}
             {currentScreen === "Experience" && <Experience isDarkBackground={isDarkBackground} />} {/* Show Contact screen */}
-            {currentScreen === "Education" && <Education isDarkBackground={isDarkBackground} />}
+            {currentScreen === "Certifications" && <Certifications isDarkBackground={isDarkBackground} />}
 
             <div className="flex justify-center items-end translate-y-10 ">
                 <div className="hover:-translate-y-2 translate-y-[40px] duration-300 hover:rotate-12">
