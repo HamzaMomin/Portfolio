@@ -36,9 +36,9 @@ export default function Navbar() {
   }, []);
   return (
     <nav>
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center mt-4">
         
-        <h1 id="hackerText" className="text-black   md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
+        <h1 id="hackerText" className="bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
         
         {/* Mobile Menu Button */}
         <button
@@ -54,19 +54,19 @@ export default function Navbar() {
           absolute top-16 left-0 w-full md:bg-transparent md:flex-row
           ${isOpen ? "block" : "hidden"} md:block
         `}>
-          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]  rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[10px]  hover:translate-x-[10px]">
+          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]  rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             <a href="#">Projects</a>
           </li>
-          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]">
+          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             <a href="#">Work</a>
           </li>
-          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[10px]  hover:translate-x-[-10px]">
+          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             <a href="#">Education</a>
           </li>
-          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]">
+          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             <a href="#">Contact</a>
           </li>
-          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[10px]  hover:translate-x-[-10px]">
+          <li className="text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             <a href="#">Resume</a>
           </li>
         </ul>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 :root {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
  
 }
@@ -12,3 +12,16 @@
 }
 
 
+ @keyframes marquee {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+          .animate-marquee {
+            display: flex;
+            animation: marquee 10s linear infinite;
+            width: max-content;
+          }
