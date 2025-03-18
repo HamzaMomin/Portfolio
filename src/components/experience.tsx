@@ -9,7 +9,7 @@ interface ExperienceCard {
   company: string;
   role: string;
   date: any;
-  des: string;
+  des: string[];
 
 }
 
@@ -19,14 +19,25 @@ const experiences: ExperienceCard[] = [
     role: "Full-time",
     company: "Xgrid.co",
     date: "Sep 2024 - Present",
-    des: "As a Junior WordPress Developer, I worked on both the front-end and back-end, using HTML, CSS, Bootstrap, and PHP to integrate ACF fields and create dynamic pages. My responsibilities included fixing website issues, optimizing performance, and conducting QA testing to ensure functionality and responsiveness. I also developed a custom WordPress plugin that automatically assigns alt attributes to images, enhancing SEO and accessibility. Additionally, I built and customized pages using popular page builders like Elementor and Avada to create visually appealing and user-friendly websites.",
+    des: [
+      "Worked on both front-end and back-end using HTML, CSS, Bootstrap, and PHP",
+      "Integrated ACF fields and created dynamic pages",
+      "Fixed website issues, optimized performance, and conducted QA testing",
+      "Developed a custom WordPress plugin to automatically assign alt attributes to images for SEO & accessibility",
+      "Built and customized pages using Elementor and Avada"
+    ]
   },
   {
     title: "Internship | Junior WordPress Developer",
     company: "Xgrid.co",
     role: "",
     date: "Mar 2024 - Aug 2024",
-    des: "Utilized WordPress page builders such as Elementor and Avada to design and develop visually appealing front-end web pages. Collaborated closely with senior developers, assisting in the creation of custom solutions using HTML, CSS, Bootstrap, and JavaScript.Conducted QA testing and prepared detailed reports on website functionality, identifying bugs and performance issues."
+    des: [
+      "Used Elementor and Avada to design and develop visually appealing web pages",
+      "Assisted senior developers in creating custom solutions using HTML, CSS, Bootstrap, and JavaScript",
+      "Conducted QA testing and prepared detailed reports on website functionality",
+      "Identified bugs and performance issues"
+    ]
 
   },
   {
@@ -34,8 +45,12 @@ const experiences: ExperienceCard[] = [
     company: "Mindstorm Studios",
     role: "",
     date: "Jun 2023 - Aug 2023",
-    des: "Designed and developed FooDefender, a 3D pixel-art tower defense game, within one month. The game combines 2D character mechanics with immersive 3D environments, challenging players to defend against waves of enemies while strategically placing traps. Earned the prestigious Outstanding Art Award at Pakistan's Largest Game Jam "
-
+    des: [
+      "Designed and developed FooDefender, a 3D pixel-art tower defense game in one month",
+      "Integrated 2D character mechanics into 3D environments",
+      "Created strategic gameplay requiring trap placement against enemy waves",
+      "Won the Outstanding Art Award at Pakistan’s Largest Game Jam"
+    ]
 
   }
 ];
@@ -63,7 +78,7 @@ const WorkExperience = () => {
   return (
     <div className="bg-[#8389AB] py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="md:text-[48px] lg:text-[48px] sm:text-[20px] font-bold text-center mb-12 inline-block relative">
+        <h2 id='hackerText' className="md:text-[48px]  lg:text-[48px] sm:text-[20px] font-bold text-center mb-12 inline-block relative">
           Work Experience
         </h2>
 
@@ -73,11 +88,16 @@ const WorkExperience = () => {
               <div key={index} className="px-4">
                 <div className=" bg-white rounded-lg p-6 mb-12 border-2  border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:mx-24 lg:mx-24 sm:mx-auto">
 
-                  <h3 className="text-xl font-semibold mb-2 flex items-start">{exp.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-left bg-orange-500  p-4 px-6 inline-block rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">{exp.title}</h3>
                   <p className="text-black text-xl flex items-start">{exp.role}</p>
-                  <p className="text-gray-700 flex items-start">{exp.company} | {exp.date}</p>
-
-                  <p className="text-black text-[18px] flex items-start mt-4 ">{exp.des}</p>
+                  
+                  <p className="text-gray-700 flex items-start cursor-pointer">{exp.company} | {exp.date}</p>
+                  
+                  <ul className="list-disc text-left list-inside mt-4 space-y-2 text-black text-[18px]">
+                    {exp.des.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
 
 
                 </div>
