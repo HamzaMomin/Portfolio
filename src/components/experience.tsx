@@ -76,7 +76,7 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="bg-[#8389AB] py-12 px-4">
+    <div className="bg-[#8389AB] py-12 px-4 border-2 border-black">
       <div className="max-w-7xl mx-auto">
         <h2 id='hackerText' className="md:text-[48px]  lg:text-[48px] sm:text-[20px] font-bold text-center mb-12 inline-block relative">
           Work Experience

@@ -97,14 +97,18 @@ const Certifications = () => {
 
       {/* Show More Button */}
       <div className="flex justify-center mt-6">
-        <button 
-          onClick={() => setShowAll(!showAll)} 
-          className="flex items-center gap-2 px-5 py-2 bg-orange-500 p-2  hover:bg-orange-600  text-white font-bold rounded-lg transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-        >
-          
-          {showAll ? <FaChevronUp /> : <FaChevronDown />}
-        </button>
-      </div>
+  <button 
+    onClick={() => setShowAll(!showAll)} 
+    className="flex items-center gap-2 px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+  >
+    <span 
+      className={`transition-transform duration-300 ${showAll ? "rotate-180" : "rotate-0"}`}
+    >
+      {showAll ? <FaChevronUp /> : <FaChevronDown />}
+    </span>
+  </button>
+</div>
+
     </div>
   );
 };
