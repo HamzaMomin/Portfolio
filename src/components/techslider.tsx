@@ -46,7 +46,7 @@ const LogoSlider = () => {
   return (
     <div className=" mx-auto flex items-center border-t-4 border-b-4 border-black bg-[#FFEA00] px-6 py-3 ">
     {/* Left Section with Heading and Arrow */}
-    <h2 className=" font-bold flex items-center gap-2 w-1/4 md:text-3xl sm:text-xl">
+    <h2 id='hackerText' className=" font-bold flex items-center gap-2 w-1/4 md:text-3xl sm:text-xl">
       Tech Stack <span className="md:text-3xl sm:text-xl">›</span>
     </h2>
 

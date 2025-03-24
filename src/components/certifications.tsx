@@ -50,7 +50,7 @@ const CertificationCard = ({ title, image, credlyLink, certLink }: {
   title: string; image: string; credlyLink: string; certLink: string; 
 }) => {
   return (
-    <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-lg p-5 w-full max-w-xs mx-auto">
+    <div className="bg-[#C7D9DD] border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-lg p-5 w-full max-w-xs mx-auto">
       <div className="flex flex-col items-center">
         <img src={image} alt={title} className="w-32 h-32 object-contain mb-3" />
         <p className="text-center font-semibold text-black">{title}</p>

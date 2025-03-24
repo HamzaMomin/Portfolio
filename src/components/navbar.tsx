@@ -38,7 +38,7 @@ export default function Navbar() {
     <nav>
       <div className="container mx-auto flex justify-between items-center mt-4">
         
-        <h1 id="hackerText" className="bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
+        <h1 id="hackerText" className="bg-gradient-to-r  from-gray-600 to-gray-900 bg-clip-text text-transparent md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
         
         {/* Mobile Menu Button */}
         <button
