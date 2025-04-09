@@ -23,7 +23,7 @@ const experiences: ExperienceCard[] = [
             "Cloudflare is used for hosting, while EmailJS is integrated for seamless custom email services.",
             
         ],
-        background: "/src/assets/phostrack.png"
+        background: "phostrack.png"
     },
     {
         ProjectTitle: "Poistivus",
@@ -34,7 +34,7 @@ const experiences: ExperienceCard[] = [
            "Bootstrap 5 was used to build this website, along with custom CSS for styling.",
            "This project was created to practice and learn Bootstrap."
         ],
-        background: "/src/assets/positivus.png"
+        background: "positivus.png"
     },{
         ProjectTitle: "Real Estate Insignia",
         ProjectURL: "https://github.com/HamzaMomin/Real_Estate_Insignia_Admin_Panel_Web",
@@ -72,7 +72,7 @@ const WorkExperience = () => {
     };
 
     return (
-        <div className="bg-[#8389AB] py-12 px-4 relative border-2 border-black">
+        <div id='Projects' className="bg-[#8389AB] py-12 px-4 relative border-2 border-black">
             <div className="max-w-7xl mx-auto">
                 <h2 id='hackerText' className="md:text-[48px] lg:text-[48px] sm:text-[20px] font-bold text-center mb-12 relative">
                     Projects

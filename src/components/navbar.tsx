@@ -46,6 +46,10 @@ export default function Navbar() {
     }
   };
 
+  const handleViewResume = () => {
+    window.open("/Hamza Momin.pdf", "_blank");
+  };
+
   return (
     
     <nav>
@@ -75,16 +79,16 @@ export default function Navbar() {
           <li  onClick={() => handleScroll("Work")}  className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             Work
           </li>
-          <li className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
+          <li onClick={() => handleScroll("Certs")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
            Certs
           </li>
-          <li className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
+          <li onClick={() => handleScroll("Projects")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
            Projects
           </li>
-          <li className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]  rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
+          <li onClick={() => handleScroll("Contact")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]  rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             Contact Me
           </li>
-          <li className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#fd895b]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
+          <li onClick={handleViewResume} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#fd895b]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
             Resume
           </li>
         </ul>

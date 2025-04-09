@@ -3,14 +3,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const logos = [
-  "/src/assets/html.svg",
-  "/src/assets/css.svg",
-  "/src/assets/bootstrap.svg",
-  "/src/assets/tailwind.svg",
-  "/src/assets/js.svg",
-  "/src/assets/wordpress.svg",
-  "/src/assets/aws.svg",
-  "/src/assets/php.svg",
+  "/html.svg",
+  "/css.svg",
+  "/bootstrap.svg",
+  "/tailwind.svg",
+  "/js.svg",
+  "/wordpress.svg",
+  "/aws.svg",
+  "/php.svg",
 ];
 
 const LogoSlider = () => {

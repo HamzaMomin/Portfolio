@@ -1,10 +1,11 @@
+import myface from "/public/Hamza Momin.gif"
 export default function AboutMe() {
   return (
     <div className="container mx-auto mt-12 flex flex-col sm:flex-col-reverse md:flex-row gap-2 lg:items-center lg:justify-center">
       {/* Left Div */}
       <div className=" flex-1 p-4 md:justify-end lg:justify-end">
         <h1 className="text-lg font-bold">
-          Hi, welcome to my portfolio. My name is Hamza Momin. I'm a web developer and tech nerd.
+        Hey there! I’m Hamza Momin — a  <span className="text-3xl font-bold leading-none text-red-500">front-end engineer</span> crafting sleek, interactive web experiences. From code to design, I bring ideas to life. Explore my digital playground and see what I’ve built!
         </h1>
 
         <div className="mt-12 flex justify-center items-center gap-4 ">
@@ -94,7 +95,7 @@ export default function AboutMe() {
 
       {/* Right Div */}
       <div className=" flex-1 p-4 flex md:justify-end lg:justify-end">
-        <img alt="My Face" src="/src/assets/Hamza Momin.gif" className="md:w-[461px] md:h-[461px] sm:w-[230px] sm:h-[230px]  object-cover" />
+        <img alt="My Face" src={myface} className="md:w-[461px] md:h-[461px] sm:w-[230px] sm:h-[230px]  object-cover" />
       </div>
 
 

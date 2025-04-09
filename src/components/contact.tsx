@@ -31,7 +31,7 @@ function Contact() {
     }
   };
   return (
-    <div id='contact' className="flex flex-col lg:flex-row justify-center min-h-screen px-6 lg:px-12 py-6">
+    <div id='Contact' className="flex flex-col lg:flex-row justify-center min-h-screen px-6 lg:px-12 py-6">
       {/* Left Side - Title & Box */}
       <div className="flex flex-col space-y-6 text-center lg:text-left w-full lg:w-auto self-start">
         <h1 id="hackerText" className="text-4xl font-bold mt-[80px]">Let’s Connect!</h1>
@@ -75,7 +75,7 @@ function Contact() {
         <div className="w-full flex justify-end">
           <button disabled={isSubmitting} type="submit" className="cursor-pointer w-full lg:w-40 h-12 bg-yellow-400 text-black font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black flex items-center justify-center space-x-2 hover:bg-yellow-500 transition">
             <span></span>
-            
+
 
             {isSubmitting ? (
               <div className=" animate-spin w-5 h-5 border-t-2 border-white border-solid rounded-full mx-auto "></div>
@@ -105,11 +105,11 @@ function Contact() {
         </div>
 
       )}
-      
-     
-   
+
+
+
     </div>
-    
+
   );
 };
 
