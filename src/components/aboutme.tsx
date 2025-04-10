@@ -77,7 +77,7 @@ export default function AboutMe() {
           {/* Connect Button */}
 
           <button onClick={() => {
-            const el = document.getElementById("contact");
+            const el = document.getElementById("Contact");
             el?.scrollIntoView({ behavior: "smooth" });
           }} className="inline-block px-3 py-1.5 text-base sm:text-xl font-bold text-black bg-[#FF8000] border-2 border-black rounded-md shadow-[2px_2px_0px_#000] sm:shadow-[4px_4px_0px_#000] transition-all duration-300 scale-100 sm:scale-90 hover:bg-[#FF8000] hover:text-white hover:border-black hover:scale-105 active:bg-yellow-300 active:shadow-none active:translate-y-1 cursor-pointer">
             Let's Connect

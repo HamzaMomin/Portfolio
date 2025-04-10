@@ -18,9 +18,10 @@ const experiences: ExperienceCard[] = [
         ProjectURL: "https://phostrack.com/",
        
         des: [
-            "Phostrack is a mobile app built using React Native, powered by Hugging Face AI for image generation.",
-            "The landing page is developed with React.js, Tailwind CSS, and TypeScript for a sleek and responsive design.",
-            "Cloudflare is used for hosting, while EmailJS is integrated for seamless custom email services.",
+            "📱 Phostrack is a mobile app built using React Native, powered by Hugging Face AI for image generation.",
+            "🌐 The landing page is developed with React.js, Tailwind CSS, and TypeScript for a sleek and responsive design.",
+            "☁️ Cloudflare is used for hosting, while EmailJS is integrated for seamless custom email services.",
+            "✉️ Email Integration: Utilizes EmailJS for smooth and customizable email communication."
             
         ],
         background: "phostrack.png"
@@ -30,9 +31,9 @@ const experiences: ExperienceCard[] = [
         ProjectURL: "https://github.com/HamzaMomin/Poistivus",
       
         des: [
-           "A simple Figma-to-Bootstrap conversion.",
-           "Bootstrap 5 was used to build this website, along with custom CSS for styling.",
-           "This project was created to practice and learn Bootstrap."
+           "🎨 A simple Figma-to-Bootstrap conversion.",
+           "🧩 Bootstrap 5 was used to build this website, along with custom CSS for styling.",
+           "🛠️ This project was created to practice and learn Bootstrap."
         ],
         background: "positivus.png"
     },{
@@ -40,9 +41,13 @@ const experiences: ExperienceCard[] = [
         ProjectURL: "https://github.com/HamzaMomin/Real_Estate_Insignia_Admin_Panel_Web",
       
         des: [
-          
+          "📱 Cross-platform application built using Flutter (supports Android & Web).",
+           "🎯 Main objective: To combat and prevent online real estate scams commonly found in other platforms",
+           "🏘️ Verified housing societies based on official NOC (No Objection Certificate) status.",
+           "📄 Includes document verification features to ensure property listings are legitimate.",
+           "☁️ Backed by Firebase for real-time database, authentication, and hosting."
         ],
-        background: "/src/assets/"
+        background: "REI.png"
     }
 ];
 
@@ -86,10 +91,10 @@ const WorkExperience = () => {
                                     <div className="w-full h-128 bg-cover rounded-t-lg border-b-2 border-black" style={{ backgroundImage: `url(${exp.background})` }}></div>
 
                                     <div className="flex items-center justify-between p-4">
-                                        <div>
+                                        <div className="flex flex-col items-start">
                                             <h3 className="text-xl text-black  mt-2 font-bold flex item-start">{exp.ProjectTitle}</h3>
 
-                                            <a href={exp.ProjectURL} target="_blank" rel="noopener noreferrer" className=" text-white  hover:text-black bg-orange-600 border-2 border-black px-4 rounded-2xl  shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]  font-semibold mt-2 flex items-start cursor-pointer">
+                                            <a href={exp.ProjectURL} target="_blank" rel="noopener noreferrer" className="inline-block text-white  hover:text-black bg-orange-600 border-2 border-black px-4 rounded-2xl  shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]  font-semibold mt-2  cursor-pointer">
                                                 View Project
                                             </a>
                                         </div>
