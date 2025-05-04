@@ -50,8 +50,8 @@ const CertificationCard = ({ title, image, credlyLink, certLink }: {
   title: string; image: string; credlyLink: string; certLink: string;
 }) => {
   return (
-    <div id="Certs" className="bg-[#C7D9DD] border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-lg p-5 w-full max-w-xs mx-auto">
-      <div className="flex flex-col items-center">
+    <div id="Certs" className="cards bg-amber-50  shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-lg p-5 w-full max-w-xs mx-auto">
+      <div className="flex flex-col items-center ">
         <img src={image} alt={title} className="w-32 h-32 object-contain mb-3" />
         <p className="text-center font-semibold text-black">{title}</p>
 
@@ -83,7 +83,7 @@ const Certifications = () => {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="mx-auto py-12 px-4">
+    <div className="mx-auto py-12 px-4 certs-background">
       <h2 id="hackerText" className="md:text-[48px] lg:text-[48px] sm:text-[20px] font-bold text-center mb-12">
         Certifications
       </h2>

@@ -1,7 +1,9 @@
 import myface from "/public/Hamza Momin.gif"
 export default function AboutMe() {
   return (
-    <div className="container mx-auto mt-12 flex flex-col sm:flex-col-reverse md:flex-row gap-2 lg:items-center lg:justify-center">
+    <div className="home-background mx-auto  flex flex-col sm:flex-col-reverse md:flex-row gap-2 lg:items-center lg:justify-center "
+   
+    >
       {/* Left Div */}
       <div className=" flex-1 p-4 md:justify-end lg:justify-end">
         <h1 className="text-lg font-bold">

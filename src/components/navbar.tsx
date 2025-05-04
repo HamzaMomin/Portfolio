@@ -52,8 +52,8 @@ export default function Navbar() {
 
   return (
     
-    <nav>
-      <div className="container mx-auto px-4 flex justify-between items-center mt-4">
+    <nav className=" nav-background">
+      <div className=" mx-auto px-6 flex justify-between items-center py-4 ">
 
         <h1 id="hackerText" className="bg-gradient-to-r  from-gray-600 to-gray-900 bg-clip-text text-transparent md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
 

@@ -3,8 +3,9 @@ import Certifications from "./components/certifications"
 import Contact from "./components/contact"
 import Experience from "./components/experience"
 import Navbar from "./components/navbar"
+import PixelArt from "./components/pixelart"
 import Projects from "./components/projects"
-import LogoSlider from "./components/techslider"
+
 
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
     
     <Navbar />
     <AboutMe />
-    <LogoSlider/>
+   
     <Experience/>
     <Certifications/>
     <Projects />
+    <PixelArt/>
     <Contact />
     </>
   )

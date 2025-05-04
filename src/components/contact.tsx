@@ -31,13 +31,18 @@ function Contact() {
     }
   };
   return (
-    <div id='Contact' className="flex flex-col lg:flex-row justify-center min-h-screen px-6 lg:px-12 py-6">
-      {/* Left Side - Title & Box */}
-      <div className="flex flex-col space-y-6 text-center lg:text-left w-full lg:w-auto self-start">
-        <h1 id="hackerText" className="text-4xl font-bold mt-[80px]">Let’s Connect!</h1>
-        <div className="w-40 h-40 mx-auto lg:mx-0 bg-gray-300 border border-black">
 
-        </div>
+    <div id='Contact' className="contact-background flex flex-col lg:flex-row justify-center  px-6 lg:px-12 py-48 ">
+      
+      
+
+      {/* Left Side - Title & Box */}
+      <div className="flex flex-col space-y-6 text-center lg:text-left w-full lg:w-auto self-start mt-12">
+        <h1 id="hackerText" className="text-4xl font-bold mt-[80px]">Contact Me</h1>
+        <p className='mt-[55px] text-2xl  text-center'>
+          Want to collaborate or hire me <br />for a project? <br />Just fill out the contact form <br /> and let’s connect!
+        </p>
+
       </div>
 
       {/* Right Side - Form */}
@@ -49,7 +54,7 @@ function Contact() {
             name="user_name" //use this name same as in template
             id="user_name"
             placeholder="Your Name"
-            className="w-full lg:w-48 h-12 px-4 bg-gray-300 text-gray-700 font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
+            className="w-full lg:w-48 h-12 px-4 bg-gray-300 text-gray-700 font-semibold  shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
             required
           />
           <input
@@ -57,7 +62,7 @@ function Contact() {
             type="email"
             id="user_email"
             placeholder="Your Email"
-            className="w-full lg:w-48 h-12 px-4 bg-gray-300 text-gray-700 font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
+            className="w-full lg:w-48 h-12 px-4 bg-gray-300 text-gray-700 font-semibold shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
             required
           />
         </div>
@@ -66,7 +71,7 @@ function Contact() {
           name="message"
           id="message"
           placeholder="Your Message"
-          className="w-full lg:w-100 h-32 px-4 py-2 bg-gray-300 text-gray-700 font-semibold rounded-2xl shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
+          className="w-full lg:w-100 h-32 px-4 py-2 bg-gray-300 text-gray-700 font-semibold  shadow-[4px_4px_0px_#000] border border-black focus:outline-none"
           required
         >
 
@@ -78,9 +83,9 @@ function Contact() {
 
 
             {isSubmitting ? (
-              <div className=" animate-spin w-5 h-5 border-t-2 border-white border-solid rounded-full mx-auto "></div>
+              <div className=" animate-spin w-5 h-5 border-t-2 border-white border-solid  mx-auto "></div>
             ) : (
-              'Let’s Go 🚀'
+              'Submit 🚀'
             )}
           </button>
 
@@ -109,6 +114,10 @@ function Contact() {
 
 
     </div>
+
+
+
+
 
   );
 };
