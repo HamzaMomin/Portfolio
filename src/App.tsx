@@ -1,29 +1,33 @@
+import { Routes, Route } from "react-router-dom";
 import AboutMe from "./components/aboutme"
-import Certifications from "./components/certifications"
-import Contact from "./components/contact"
-import Experience from "./components/experience"
-import Navbar from "./components/navbar"
-// import PixelArt from "./components/pixelart"
+import Work from "./components/work"
+import Certs from "./components/certs"
 import Projects from "./components/projects"
+import Navbar from "./components/navbar"
 
 
-
-function App() {
-
-
+export default function App() {
   return (
     <>
     
-    <Navbar />
-    <AboutMe />
-   
-    <Experience/>
-    <Certifications/>
-    <Projects />
-    {/* <PixelArt/> */}
-    <Contact />
+      <Navbar />
+      <div className="block md:hidden">
+        {/* Mobile: Render all sections for scrollable single-page experience */}
+        <AboutMe />
+        <Work />
+        <Certs />
+        <Projects />
+        {/* Add more sections here if needed, e.g. <Projects />, <Contact /> */}
+      </div>
+      <div className="hidden md:block">
+        {/* Desktop: Use routes as before */}
+        <Routes>
+          <Route path="/" element={<AboutMe />} />
+          <Route path="/Work" element={<Work />} />
+          <Route path="/Certs" element={<Certs />} />
+          <Route path="/Projects" element={<Projects />} />
+        </Routes>
+      </div>
     </>
-  )
+  );
 }
-
-export default App

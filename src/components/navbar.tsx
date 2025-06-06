@@ -1,95 +1,139 @@
-import { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-
+import { useState } from "react";
+// import { FaBars, FaTimes } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const targetText = "< Hamza Momin />";
-  const hackerChars = "!@#$%^&*()_+{}:<>?~";
-  const [displayText, setDisplayText] = useState<string>(targetText);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const runAnimation = () => {
-      let iterations = 0;
+  const handleScrollAndBgChange = (id: string, bgColor: string) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+
+      // Retry scroll after route change
       const interval = setInterval(() => {
-        setDisplayText(() =>
-          targetText
-            .split("")
-            .map((char, index) => {
-              if (index < iterations) return char;
-              return hackerChars[Math.floor(Math.random() * hackerChars.length)];
-            })
-            .join("")
-        );
-
-        if (iterations >= targetText.length) {
+        const el = document.getElementById(id);
+        if (el) {
+          scrollToSection(el, bgColor);
           clearInterval(interval);
-          setTimeout(runAnimation, 4000); // Restart animation after 4s
         }
-        iterations += 1;
       }, 100);
-    };
 
-    runAnimation(); // Start animation initially
-
-    return () => { }; // Cleanup function (not needed since we're looping)
-    
-  }, []);
-
-
-   // Scroll to a section by ID without showing #id in the URL
-   const handleScroll = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false); // Close mobile nav after click
+      // Stop retrying after 2 seconds
+      setTimeout(() => clearInterval(interval), 2000);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        scrollToSection(el, bgColor);
+      }
     }
   };
 
-  const handleViewResume = () => {
-    window.open("/Hamza Momin.pdf", "_blank");
+  const scrollToSection = (el: HTMLElement, bgColor: string) => {
+    el.scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false);
+    document.body.style.backgroundColor = bgColor;
   };
 
-  return (
     
-    <nav className=" nav-background">
-      <div className=" mx-auto px-6 flex justify-between items-center py-4 ">
 
-        <h1 id="hackerText" className="bg-gradient-to-r  from-gray-600 to-gray-900 bg-clip-text text-transparent md:text-[48px] sm:text-[20px] lg:text-[28px] font-bold "> {displayText}</h1>
-
+  return (
+    <nav>
+      <div className="w-full mx-auto px-6 flex justify-center items-center py-8 relative">
         {/* Mobile Menu Button */}
-        <button
-          className="text-black text-2xl md:hidden"
+        {/* <button
+          className="text-black text-2xl md:hidden absolute right-6 top-1/2 -translate-y-1/2"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        </button> */}
 
         {/* Navbar Links */}
-        <ul className={`
-          md:flex md:space-x-6 md:static md:w-auto
-          absolute top-16 left-0 w-full md:bg-transparent md:flex-row
-          z-10
-          space-y-3 md:space-y-0
-          transition-all duration-300 ease-in-out
-          ]
-          ${isOpen ? "flex flex-col items-center  backdrop-blur-md bg-white/30"  : "hidden"} md:block
-        `}>
+        <ul
+          className={`md:flex md:space-x-6 md:static md:w-auto absolute top-16 left-0 w-full md:bg-transparent md:flex-row z-10 space-y-3 md:space-y-0 transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "flex flex-col items-center backdrop-blur-md bg-white/30"
+              : "hidden"
+          } md:block`}
+        >
+          <li
+            onClick={() => {
+              if (location.pathname !== "/") {
+                navigate("/");
+                setIsOpen(false);
+                document.body.style.backgroundColor = "#1C723F";
+              } else {
+                handleScrollAndBgChange("About", "#1C723F");
+              }
+            }}
+            className={`cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 bg-[#fff] rounded-full transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] ${
+              location.pathname === "/"
+                ? "border-[#ff0000] shadow-[2px_2px_0px_0px_#ff0000]"
+                : "border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:border-[#ff0000] hover:shadow-[2px_2px_0px_#ff0000]"
+            }`}
+          >
+            About
+          </li>
 
-          <li  onClick={() => handleScroll("Work")}  className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
+          <li
+            onClick={() => {
+              navigate("/Work");
+              setIsOpen(false);
+              document.body.style.backgroundColor = "#8489E9";
+            }}
+            className={`cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 bg-[#fff] rounded-full transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] ${
+              location.pathname === "/Work"
+                 ? "border-[#ff0000] shadow-[2px_2px_0px_0px_#ff0000]"
+                : "border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:border-[#ff0000] hover:shadow-[2px_2px_0px_#ff0000]"
+            }`}
+          >
             Work
           </li>
-          <li onClick={() => handleScroll("Certs")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
-           Certs
+
+          <li
+           onClick={() => {
+              navigate("/Certs");
+              setIsOpen(false);
+              document.body.style.backgroundColor = "#853333";
+            }}
+              className={`cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 bg-[#fff] rounded-full transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] ${
+              location.pathname === "/Certs"
+                 ? "border-[#ff0000] shadow-[2px_2px_0px_0px_#ff0000]"
+                : "border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:border-[#ff0000] hover:shadow-[2px_2px_0px_#ff0000]"
+            }`}
+          >
+            Certs
           </li>
-          <li onClick={() => handleScroll("Projects")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
-           Projects
+
+          <li
+             onClick={() => {
+              navigate("/Projects");
+              setIsOpen(false);
+              document.body.style.backgroundColor = "#EAD150";
+            }}
+            className={`cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 bg-[#fff] rounded-full transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] ${
+              location.pathname === "/Projects"
+                 ? "border-[#ff0000] shadow-[2px_2px_0px_0px_#ff0000]"
+                : "border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:border-[#ff0000] hover:shadow-[2px_2px_0px_#ff0000]"
+            }`}
+          
+          >
+            Projects
           </li>
-          <li onClick={() => handleScroll("Contact")} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#00C8FF]  rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px]  hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
-            Contact Me
+
+          <li
+            onClick={() => handleScrollAndBgChange("Art", "#E9BA84")}
+            className="cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 border-black bg-[#fff] rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] hover:border-[#292929] hover:shadow-[2px_2px_0px_#292929]"
+          >
+            Art
           </li>
-          <li onClick={handleViewResume} className="cursor-pointer text-black text-[20px] font-bold py-4 px-6 border-2 border-black bg-[#fd895b]   rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-10px]  hover:translate-x-[10px] hover:border-[#292929] hover:shadow-[5px_5px_0px_#292929]">
-            Resume
+
+          <li
+            onClick={() => handleScrollAndBgChange("Contact", "#00FF99")}
+            className="cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 border-black bg-[#fff] rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] hover:border-[#292929] hover:shadow-[2px_2px_0px_#292929]"
+          >
+            Contact
           </li>
         </ul>
       </div>

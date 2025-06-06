@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import Slider from 'react-slick';
-import { FaAngleLeft  , FaAngleRight  } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,10 +20,9 @@ const experiences: ExperienceCard[] = [
     company: "Xgrid.co",
     date: "Sep 2024 - Present",
     des: [
-      "Worked on both front-end and back-end using HTML, CSS, Bootstrap, and PHP",
+      "Worked on both front-end and back-end using HTML, CSS, Bootstrap, and PHP,",
       "Integrated ACF fields and created dynamic pages",
       "Fixed website issues, optimized performance, and conducted QA testing",
-      "Developed a custom WordPress plugin to automatically assign alt attributes to images for SEO & accessibility",
       "Built and customized pages using Elementor and Avada"
     ]
   },
@@ -76,23 +75,23 @@ const WorkExperience = () => {
   };
 
   return (
-    <div id='Work' className="work-background py-12 px-4 ">
-      <div className="max-w-7xl mx-auto">
-        <h2 id='hackerText' className="md:text-[48px]  lg:text-[48px] sm:text-[20px] font-bold text-center mb-12 inline-block relative">
-          Work Experience
-        </h2>
+    <div id='Work' className="work-background py-4 px-2 ">
+      <div className="max-w-4xl mx-auto">
+
+        {/* Mobile-only heading */}
+        <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start ">Work</span>
 
         <div className="relative">
           <Slider ref={sliderRef} {...settings}>
             {experiences.map((exp, index) => (
-              <div key={index} className="px-4">
-                <div className=" bg-white rounded-lg p-6 mb-12 border-2  border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:mx-24 lg:mx-24 sm:mx-auto">
+              <div key={index} className="px-2 !md:px-0 ">
+                <div className="bg-white rounded-lg p-2 mb-2 border-5 border-black md:mx-24 lg:mx-24 sm:mx-auto">
 
-                  <h3 className="text-xl font-semibold mb-2 text-left bg-orange-500  p-4 px-6 inline-block rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">{exp.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2  text-left bg-[#E9E484] p-4 w-full inline-block rounded-b-4xl border-2">{exp.title}</h3>
                   <p className="text-black text-xl flex items-start">{exp.role}</p>
-                  
+
                   <p className="text-gray-700 flex items-start cursor-pointer">{exp.company} | {exp.date}</p>
-                  
+
                   <ul className="list-disc text-left list-inside mt-4 space-y-2 text-black text-[18px]">
                     {exp.des.map((point, i) => (
                       <li key={i}>{point}</li>
@@ -105,20 +104,32 @@ const WorkExperience = () => {
               </div>
             ))}
           </Slider>
-          <div className="flex justify-end mt-4">
+          <div className="flex lg:justify-center lg:items-end md:justify-center md:items-center  sm:justify-end sm:items-end">
             <button
               onClick={previous}
-              className="bg-orange-500 p-2 rounded-full hover:bg-orange-600 transition-colors mr-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="bg-orange-500 border-2  p-2 rounded-full hover:bg-orange-600 transition-colors mr-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               <FaAngleLeft className="w-6 h-6 text-white" />
             </button>
             <button
               onClick={next}
-              className="bg-orange-500 p-2 rounded-full hover:bg-orange-600 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="bg-orange-500 border-2  p-2 rounded-full hover:bg-orange-600 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
               <FaAngleRight className="w-6 h-6 text-white" />
             </button>
           </div>
+
+          <div className="flex justify-end items-end mt-4">
+            <svg width="503" height="47" viewBox="0 0 503 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 44C80.2556 19.5985 287.813 -19.4606 500 19.5152" stroke="black" stroke-width="5" stroke-linecap="round" />
+            </svg>
+
+
+
+
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -126,3 +137,4 @@ const WorkExperience = () => {
 };
 
 export default WorkExperience;
+

@@ -3,7 +3,12 @@
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
+  font-family: "Poppins", sans-serif;
+ 
+}
 
+body {
+  background-color: #1C723F;
 }
 
 /* body{
@@ -14,7 +19,7 @@
 } */
 
 #hackerText{
-  font-family: "Lexend Zetta", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 
@@ -58,34 +63,38 @@
   background-repeat: no-repeat;
 } */
 
-.contact-background{
-  background-image: linear-gradient(to right, #54b6d0, #4698b7, #3c7c9d, #326082, #294666);
+
+
+ @Media (max-width: 470px) {
+#About{
+ padding: 0px 24px !important;
+  
 }
 
-.pixel-background{
-  background-image: linear-gradient(to right top, #f6ff54, #faa13c, #ca514c, #761d4b, #1c022d);
+#Work{
+  padding: 0px 24px !important;
+  
 }
 
-.projects-background{
-  background-image: linear-gradient(to bottom, #4f48c5, #5b41b8, #633bac, #6935a0, #6c2f94);
-}
-
-.certs-background{
-  background-image: linear-gradient(to top, #00d48c, #3db865, #4c9d43, #518325, #4f6904);
-}
-.cards{
-  background-image: linear-gradient(to right top, #2368cf, #3c6ed1, #4e74d3, #5c7bd4, #6981d6);
-}
-
-.work-background{
-  background-image: linear-gradient(to bottom, #ffc75f, #d7bf3f, #aab622, #76ad0d, #2ba311);
+.BackSVG2{
+  width: 70% !important;
+  height: 100px !important;
 
 }
 
-.home-background{
-  background-image: linear-gradient(to right bottom, #f6ff77, #ffdd5d, #ffba51, #ff9751, #fa7558);
+
+  }
+
+
+.StarSVG {
+  animation: rotate-clockwise 6s linear infinite;
 }
 
-.nav-background{
-  background-image: linear-gradient(to right bottom, #ddff77, #85fba5, #0befd5, #00dcf4, #58c5f8);
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
