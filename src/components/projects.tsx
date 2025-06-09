@@ -3,6 +3,8 @@ import Slider from 'react-slick';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Github , ExternalLink } from 'lucide-react';
+
 
 interface ProjectCard {
   ProjectName: string;
@@ -11,34 +13,38 @@ interface ProjectCard {
   Tags: string[];
   image: string;
   viewProject: string;
+  demo: string;
 }
 
 const project: ProjectCard[] = [
   {
-    ProjectName: "Project 1",
+    ProjectName: "Phostrack",
     color: "bg-[#FFDFB3]",
-    des: "Testing Projects",
-    image: "https://example.com/image1.jpg",
-    Tags: ["React", "TypeScript", "UI"],
-    viewProject: "https://example.com/project1",
+    des: "A Mobile app and landing page for phosphorus tracking.",
+    image: " ",
+    Tags: ["React", "TypeScript", "Tailwind CSS", "Cloudflare", "Hugging Face"],
+    viewProject: "https://github.com/HamzaMomin/phostrack.com",
+    demo: "https://phostrack.com/",
   },
   {
-    ProjectName: "Project 2",
+    ProjectName: "Real Estate Insignia",
     color: "bg-[#E9B3FF]",
-    des: "Testing Projects",
-    image: "https://example.com/image1.jpg",
-    Tags: ["Node.js", "API", "Backend"],
-    viewProject: "https://example.com/project1",
+    des: "A mobile app & web based Dashboard for Real Estate Fraud Detection.",
+    image: " ",
+    Tags: ["Flutter", "Firebase", "University Final Year Project"],
+    viewProject: "https://github.com/HamzaMomin/Real_Estate_Insignia",
+    demo: "https://github.com/HamzaMomin/Real_Estate_Insignia",
   },
   {
     ProjectName: "Project 3",
     color: "bg-[#D6FFB3]",
     des: "Testing Projects",
-    image: "https://example.com/image1.jpg",
+    image: " ",
     Tags: ["Python", "Data", "ML"],
     viewProject: "https://example.com/project1",
+    demo: "",
   }
-];
+]
 
 const Projects = () => {
   const sliderRef = useRef<Slider>(null);
@@ -81,13 +87,13 @@ const Projects = () => {
   return (
     <div id='Projects' className=" py-4 px-2 mt-16 sm:mt-16 md:mt-0 lg:mt-0">
       {/* Background SVG - Responsive, always top left */}
-        <div
-          className="StarSVG absolute z-[-1] right-[0px] top-[235%] md:right-[80px] md:top-[25px]"
-        >
-          <Svg />
-        </div>
+      <div
+        className="StarSVG absolute z-[-1] right-[0px] top-[235%] md:right-[80px] md:top-[25px]"
+      >
+        <Svg />
+      </div>
 
-        
+
       <div className="max-w-4xl mx-auto">
         {/* Mobile-only heading */}
 
@@ -96,38 +102,54 @@ const Projects = () => {
           <Slider ref={sliderRef} {...settings}>
             {project.map((exp, index) => (
               <div key={index} className="px-2 !md:px-0">
-                <div className={`rounded-lg w-[320px] h-[340px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto ${exp.color}`}
+                <div className={`rounded-lg w-[320px] h-[350px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto  ${exp.color}`}
                 >
                   {/* Project Image */}
                   <img src={exp.image} alt={exp.ProjectName} className="w-full  h-32 object-cover rounded-t-lg mb-2 border-b-2 border-black" />
                   {/* Project Name */}
                   <h3 className="text-black text-start text-lg font-bold mt-2 mb-1">{exp.ProjectName}</h3>
                   {/* Project Description (if you want to add, add a 'desc' field to ProjectCard) */}
-                  <p className="text-gray-700 text-start text-sm mb-2">{exp.des}</p>
+                  <p className="text-gray-700 text-start text-sm mb-2 font-light">{exp.des}</p>
                   {/* Tags */}
                   <div className="flex flex-wrap justify-start gap-2 mt-2">
                     {exp.Tags.map((tag, i) => {
-                      // Assign a color per tag for variety
-                      const tagColors = [
-                        'bg-pink-200 text-pink-800',
-                        'bg-blue-200 text-blue-800',
-                        'bg-green-200 text-green-800',
-                        'bg-yellow-200 text-yellow-800',
-                        'bg-purple-200 text-purple-800',
-                        'bg-orange-200 text-orange-800',
-                        'bg-red-200 text-red-800',
-                        'bg-gray-200 text-gray-800',
+                      const tagStyles = [
+                        { bg: 'bg-pink-200', text: 'text-pink-800', shadow: '#9d174d' },
+                        { bg: 'bg-blue-200', text: 'text-blue-800', shadow: '#1e40af' },
+                        { bg: 'bg-green-200', text: 'text-green-800', shadow: '#065f46' },
+                        { bg: 'bg-yellow-200', text: 'text-yellow-800', shadow: '#854d0e' },
+                        { bg: 'bg-purple-200', text: 'text-purple-800', shadow: '#6b21a8' },
+                        { bg: 'bg-orange-200', text: 'text-orange-800', shadow: '#9a3412' },
+                        { bg: 'bg-red-200', text: 'text-red-800', shadow: '#991b1b' },
+                        { bg: 'bg-gray-200', text: 'text-gray-800', shadow: '#1f2937' },
                       ];
-                      const colorClass = tagColors[i % tagColors.length];
+
+                      const style = tagStyles[i % tagStyles.length];
+
                       return (
-                        <span key={i} className={`px-2 py-1 border-1 rounded-full text-xs font-semibold shadow ${colorClass}`}>{tag}</span>
+                        <span
+                          key={i}
+                          className={`px-2 py-1 border rounded-full text-xs font-semibold ${style.bg} ${style.text}`}
+                          style={{
+                            boxShadow: `2px 3px 0px 0px ${style.shadow}`,
+                          }}
+                        >
+                          {tag}
+                        </span>
                       );
                     })}
                   </div>
-                  <div className='flex justify-start items-start mt-4'>
+                  <div className='flex justify-start items-start mt-4 gap-2'>
                     {/* View Project Button */}
-                    <a href={exp.viewProject} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-[12px] bg-[#ffd900] border-2 font-medium text-black  px-2 py-2 rounded-full hover:bg-[#F39E60] transition-colors ">
-                      View Project
+                    <a href={exp.viewProject} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold italic inline-flex text-[12px] bg-[#ffd900] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#F39E60] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    
+                      View Project     
+                      <Github className="ml-2 w-4 h-4" color='black'/>
+                    </a>
+                
+                    <a href={exp.demo} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold  italic inline-flex text-[12px] bg-[#f85d58] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#f79494] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                      Demo
+                      <ExternalLink className='ml-2 w-4 h-4' color='black'/>
                     </a>
                   </div>
                 </div>
@@ -151,12 +173,12 @@ const Projects = () => {
           </div>
         </div>
       </div>
-    
-  
+
+
 
     </div>
 
-    
+
   );
 };
 
