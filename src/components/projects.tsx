@@ -16,12 +16,13 @@ interface ProjectCard {
   demo: string;
 }
 
+
 const project: ProjectCard[] = [
   {
     ProjectName: "Phostrack",
     color: "bg-[#FFDFB3]",
     des: "A Mobile app and landing page for phosphorus tracking.",
-    image: " ",
+    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
     Tags: ["React", "TypeScript", "Tailwind CSS", "Cloudflare", "Hugging Face"],
     viewProject: "https://github.com/HamzaMomin/phostrack.com",
     demo: "https://phostrack.com/",
@@ -30,7 +31,7 @@ const project: ProjectCard[] = [
     ProjectName: "Real Estate Insignia",
     color: "bg-[#E9B3FF]",
     des: "A mobile app & web based Dashboard for Real Estate Fraud Detection.",
-    image: " ",
+    image: "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg",
     Tags: ["Flutter", "Firebase", "University Final Year Project"],
     viewProject: "https://github.com/HamzaMomin/Real_Estate_Insignia",
     demo: "https://github.com/HamzaMomin/Real_Estate_Insignia",
@@ -39,7 +40,7 @@ const project: ProjectCard[] = [
     ProjectName: "Gun Lord / Gun Lord Club",
     color: "bg-[#D6FFB3]",
     des: "A collection of Pixeled animated Guns NFTs on Polygon and Ethereum Blockchain.",
-    image: " ",
+    image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     Tags: ["Python", "Polygon", "ERC-721", "Blockchain", "JSON"],
     viewProject: "https://opensea.io/collection/gunlord",
     demo: "https://opensea.io/collection/gunlordclub",
@@ -65,7 +66,9 @@ const marqueeItems = [
   "Firebase",
   "Git",
   "GitHub",
-
+  "Email.js",
+  "PHP",
+  "ACF",
 ];
 
 const Projects = () => {
@@ -127,7 +130,7 @@ const Projects = () => {
                 <div className={`rounded-lg w-[320px] h-[350px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto  ${exp.color}`}
                 >
                   {/* Project Image */}
-                  <img src={exp.image} alt={exp.ProjectName} className="w-full  h-32 object-cover rounded-t-lg mb-2 border-b-2 border-black" />
+                  <img src={exp.image} alt={exp.ProjectName} className="w-full h-20 object-cover rounded-t-lg mb-2 border-b-2 border-black" />
                   {/* Project Name */}
                   <h3 className="text-black text-start text-lg font-bold mt-2 mb-1 underline">{exp.ProjectName}</h3>
                   {/* Project Description (if you want to add, add a 'desc' field to ProjectCard) */}

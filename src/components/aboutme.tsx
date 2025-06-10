@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function AboutMe() {
 
   const targetText = "< Hamza Momin />";
   const hackerChars = "!@#$%^&*()_+{}:<>?~";
   const [displayText, setDisplayText] = useState<string>(targetText);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const runAnimation = () => {
@@ -38,6 +42,8 @@ export default function AboutMe() {
   const handleViewResume = () => {
     window.open("/Hamza Momin.pdf", "_blank");
   };
+
+
 
 
   return (
@@ -76,7 +82,7 @@ export default function AboutMe() {
 
         {/* Left Column */}
         <div className="flex-1 w-full text-center md:text-center">
-          <h2 id="hackerText" className="text-2xl font-bold mb-4">{displayText}</h2>
+          <h2 id="hackerText" className="text-2xl font-bold mb-4 !font-[Lexend]">{displayText}</h2>
           <p className="text-black text-xl">
             A Front-end Developer<br />
             with a knack for<br />
@@ -101,7 +107,18 @@ export default function AboutMe() {
           </div>
 
           <div className="flex flex-row mt-4 w-fit mx-auto">
-            <button className="text-xl font-black py-2 px-4 border-3 bg-[#E5D847] rounded-full cursor-pointer" >Let’s Connect</button>
+            <button onClick={() => {
+              const isMobile = window.innerWidth <= 640;
+              if (isMobile) {
+                const contactSection = document.getElementById("ContactMe");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }else{
+              navigate("/ContactMe");
+              }
+
+            }} className="text-xl font-black py-2 px-4 border-3 bg-[#E5D847] rounded-full cursor-pointer hover:bg-amber-200 transition-transform hover:translate-y-[-4px] hover:translate-x-[4px]" >Let’s Connect</button>
           </div>
 
 
@@ -117,7 +134,7 @@ export default function AboutMe() {
             />
             <div className="absolute inset-0 rounded-full bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 z-0  "></div>
           </div>
-          <button className=" mt-8 text-[14px] font-medium py-2 px-4 border-3 bg-[#D55E5E] rounded-full cursor-pointer" onClick={handleViewResume}>Resume </button>
+          <button className=" mt-8 text-[14px] font-medium py-2 px-4 border-3 bg-[#D55E5E] hover:bg-[#D55E5E]  rounded-full cursor-pointer transition-transform hover:translate-y-[-4px] hover:translate-x-[4px]" onClick={handleViewResume}>Resume </button>
 
         </div>
 

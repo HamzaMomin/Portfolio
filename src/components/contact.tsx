@@ -34,7 +34,7 @@ function ContactMe() {
     <section id='ContactMe'>
       <span className="block font-bold  md:hidden !text-[40px] mb-2 text-end  mr-4 mt-8">Let's Connect</span>
 
-      <div className="relative !sm:mt-6 md:mt-6 lg:mt-6 p-6  md:px-[82px] md:py-[62px] gap-6 bg-gray-200 rounded-3xl max-w-3xl w-full mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-5 border-black flex flex-col md:flex-row items-center justify-between ">
+      <div className="relative !sm:mt-6 md:mt-6 lg:mt-6 p-6   md:px-[82px] md:py-[62px] sm:gap-2 md:gap-6 lg:gap-6 bg-gray-200 rounded-3xl max-w-3xl w-full mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-5 border-black flex flex-col md:flex-row items-center justify-between ">
 
         <div
           className="StarSVG absolute z-[-1]  left-[-16px] top-[-56px] md:left-[-50px] md:top-[-45px]"
@@ -128,12 +128,12 @@ function ContactMe() {
           </textarea>
 
           <div className="w-full flex justify-end">
-            <button disabled={isSubmitting} type="submit" className="cursor-pointer w-full lg:w-40 h-12 bg-yellow-400 text-black font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black flex items-center justify-center space-x-2 hover:bg-yellow-500 transition">
+            <button disabled={isSubmitting} type="submit" className="cursor-pointer  mb-8 w-full lg:w-40 h-12 bg-yellow-400 text-black font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black flex items-center justify-center space-x-2 hover:bg-yellow-500 transition">
               <span></span>
 
 
               {isSubmitting ? (
-                <div className=" animate-spin w-5 h-5 border-t-2 border-white border-solid  mx-auto "></div>
+                <div className=" animate-spin w-5 h-5  border-t-2 border-white border-solid  mx-auto "></div>
               ) : (
                 'Submit 🚀'
               )}

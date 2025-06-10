@@ -1,69 +1,72 @@
 @import "tailwindcss";
+
 :root {
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lexend", sans-serif;
  
 }
 
 body {
-  background-color: #1C723F;
-}
+    background-color: #1C723F;
+  }
 
-/* body{
-  background-image: url("/Group 9.jpg") !important;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
-} */
 
-#hackerText{
+#hackerText {
   font-family: "Poppins", sans-serif;
 }
 
 
- @keyframes marquee {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-100%);
-            }
-          }
-          .animate-marquee {
-            display: flex;
-            animation: marquee 10s linear infinite;
-            width: max-content;
-          }
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
 
-
-
-
- @Media (max-width: 470px) {
-#About{
- padding: 0px 24px !important;
-  
+  to {
+    transform: translateX(-100%);
+  }
 }
 
-#Work{
-  padding: 0px 24px !important;
-  
+.animate-marquee {
+  display: flex;
+  animation: marquee 10s linear infinite;
+  width: max-content;
 }
 
-#ContactMe{
-  padding: 0px 24px !important;
-  
-}
 
-.BackSVG2{
-  width: 70% !important;
-  height: 100px !important;
 
-}
 
+@Media (max-width: 470px) {
+
+  body {
+    background-color: #1C723F;
+  }
+
+  #About {
+    padding: 0px 24px !important;
 
   }
+
+  #Work {
+    padding: 0px 24px !important;
+
+  }
+
+  #ContactMe {
+    padding: 0px 24px !important;
+    margin-bottom: 24px;
+  }
+
+  .BackSVG2 {
+    width: 70% !important;
+    height: 100px !important;
+
+  }
+
+
+
+}
 
 
 .StarSVG {
@@ -74,6 +77,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -88,9 +92,12 @@ body {
   0% {
     transform: translateY(0);
   }
+
   50% {
-    transform: translateY(-10px); /* Adjust the distance for the float effect */
+    transform: translateY(-10px);
+    /* Adjust the distance for the float effect */
   }
+
   100% {
     transform: translateY(0);
   }
