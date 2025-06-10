@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Github , ExternalLink } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 
 interface ProjectCard {
@@ -36,15 +36,37 @@ const project: ProjectCard[] = [
     demo: "https://github.com/HamzaMomin/Real_Estate_Insignia",
   },
   {
-    ProjectName: "Project 3",
+    ProjectName: "Gun Lord / Gun Lord Club",
     color: "bg-[#D6FFB3]",
-    des: "Testing Projects",
+    des: "A collection of Pixeled animated Guns NFTs on Polygon and Ethereum Blockchain.",
     image: " ",
-    Tags: ["Python", "Data", "ML"],
-    viewProject: "https://example.com/project1",
-    demo: "",
+    Tags: ["Python", "Polygon", "ERC-721", "Blockchain", "JSON"],
+    viewProject: "https://opensea.io/collection/gunlord",
+    demo: "https://opensea.io/collection/gunlordclub",
   }
 ]
+
+
+const marqueeItems = [
+  "WordPress",
+  "HTML",
+  "CSS",
+  "SCSS",
+  "Bootstrap",
+  "Tailwind CSS",
+  "JavaScript",
+  "TypeScript",
+  "React JS",
+  "Shadcn UI",
+  "Elementor",
+  "Avada",
+  "Wix",
+  "AWS",
+  "Firebase",
+  "Git",
+  "GitHub",
+
+];
 
 const Projects = () => {
   const sliderRef = useRef<Slider>(null);
@@ -85,19 +107,19 @@ const Projects = () => {
   };
 
   return (
-    <div id='Projects' className=" py-4 px-2 mt-16 sm:mt-16 md:mt-0 lg:mt-0">
+    <div id='Projects' className=" py-4 px-2 mt-16 sm:mt-16 md:mt-0 lg:mt-0 ">
       {/* Background SVG - Responsive, always top left */}
       <div
-        className="StarSVG absolute z-[-1] right-[0px] top-[235%] md:right-[80px] md:top-[25px]"
+        className="StarSVG absolute z-[-1] right-[0px] top-[235%] md:right-[80px] md:top-[25px] "
       >
         <Svg />
       </div>
 
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl  mx-auto ">
         {/* Mobile-only heading */}
 
-        <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start ">Projects</span>
+        <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start mt-8">Projects</span>
         <div className="relative">
           <Slider ref={sliderRef} {...settings}>
             {project.map((exp, index) => (
@@ -107,7 +129,7 @@ const Projects = () => {
                   {/* Project Image */}
                   <img src={exp.image} alt={exp.ProjectName} className="w-full  h-32 object-cover rounded-t-lg mb-2 border-b-2 border-black" />
                   {/* Project Name */}
-                  <h3 className="text-black text-start text-lg font-bold mt-2 mb-1">{exp.ProjectName}</h3>
+                  <h3 className="text-black text-start text-lg font-bold mt-2 mb-1 underline">{exp.ProjectName}</h3>
                   {/* Project Description (if you want to add, add a 'desc' field to ProjectCard) */}
                   <p className="text-gray-700 text-start text-sm mb-2 font-light">{exp.des}</p>
                   {/* Tags */}
@@ -142,14 +164,14 @@ const Projects = () => {
                   <div className='flex justify-start items-start mt-4 gap-2'>
                     {/* View Project Button */}
                     <a href={exp.viewProject} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold italic inline-flex text-[12px] bg-[#ffd900] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#F39E60] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    
-                      View Project     
-                      <Github className="ml-2 w-4 h-4" color='black'/>
+
+                      View Project
+                      <Github className="ml-2 w-4 h-4" color='black' />
                     </a>
-                
+
                     <a href={exp.demo} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold  italic inline-flex text-[12px] bg-[#f85d58] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#f79494] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                       Demo
-                      <ExternalLink className='ml-2 w-4 h-4' color='black'/>
+                      <ExternalLink className='ml-2 w-4 h-4' color='black' />
                     </a>
                   </div>
                 </div>
@@ -174,7 +196,18 @@ const Projects = () => {
         </div>
       </div>
 
+      <div className="sm:relative md:fixed md:bottom-0 md:left-0 md:right-0 flex !overflow-hidden !mt-6 bg-black text-white ">
+        <div className="max-w-full animate-marquee whitespace-nowrap">
+          {[...marqueeItems, ...marqueeItems].map((item, index) => (
 
+            <span key={index} className="m-2 p">
+              •
+              {item}
+              •
+            </span>
+          ))}
+        </div>
+      </div>
 
     </div>
 
@@ -197,6 +230,5 @@ function Svg() {
 
   );
 }
-
 
 

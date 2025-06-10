@@ -51,7 +51,7 @@ const settings = {
 	dots: true,
 	infinite: true,
 	speed: 500,
-	slidesToShow: 3,
+	slidesToShow: 3.0,
 	slidesToScroll: 1,
 	autoplay: true,
 	autoplaySpeed: 3000,
@@ -92,9 +92,9 @@ type CertificationCardProps = {
 
 const CertificationCard = ({ title, image, credlyLink, certLink }: CertificationCardProps) => {
 	return (
-		
+
 		<div className="cards  bg-amber-50 rounded-lg mt-8 p-4 w-[320px] h-[270px] flex flex-col justify-between mx-auto border-4 border-black shadow-lg shadow-black/70">
-			
+
 			<div className="flex flex-col items-center">
 				<img src={image} alt={title} className="w-28 h-28 object-contain mb-3" />
 				<p className="text-center font-semibold text-black text-base">{title}</p>
@@ -145,9 +145,10 @@ export default function Certs() {
 				))}
 			</Slider>
 
-			<div className="hidden sm:flex justify-start items-start">
-				
+			<div className="hidden sm:flex justify-end items-end animate-float">
+
 				<StarSvg />
+
 			</div>
 
 		</div>
@@ -157,8 +158,19 @@ export default function Certs() {
 
 function StarSvg() {
 	return (
-		<svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M100 40L100.012 99.941L122.961 44.5672L100.033 99.9502L142.426 57.5736L100.05 99.9666L155.433 77.0389L100.059 99.9884L160 100L100.059 100.012L155.433 122.961L100.05 100.033L142.426 142.426L100.033 100.05L122.961 155.433L100.012 100.059L100 160L99.9884 100.059L77.0389 155.433L99.9666 100.05L57.5736 142.426L99.9502 100.033L44.5672 122.961L99.941 100.012L40 100L99.941 99.9884L44.5672 77.0389L99.9502 99.9666L57.5736 57.5736L99.9666 99.9502L77.0389 44.5672L99.9884 99.941L100 40Z" stroke="black" stroke-width="4" />
+		<svg width="154" height="154" viewBox="0 0 154 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M124.276 101.397L97.9355 75.0561L118.391 60.5362L144.732 86.8771L124.276 101.397Z" fill="#FFCE51" />
+			<path d="M97.9386 75.0499L83.2364 73.5461L103.695 59.0292L118.394 60.5331L97.9386 75.0469V75.0499Z" fill="#FFCE51" />
+			<path d="M66.2367 29.0876L8.86411 25.0824L29.3224 10.5594L86.6919 14.5738L66.2367 29.0876Z" fill="#FFCE51" />
+			<path d="M52.5136 42.8201L66.243 29.0907L70.6404 25.9718L72.9688 28.3033L103.698 59.0323L83.2427 73.5492L52.5136 42.8232V42.8201Z" fill="#FFCE51" />
+			<path d="M8.86411 25.0793L66.2368 29.0876L52.5073 42.8201L83.2333 73.5461L97.9385 75.05L124.28 101.391L96.2339 112.446L85.1788 140.495L58.8378 114.154L57.3339 99.4486L26.6049 68.7226L12.8755 82.4489L8.86411 25.0793Z" fill="#89DCFF" />
+			<path d="M113.672 105.569L96.2247 112.446L85.1696 140.492L105.628 125.975L113.669 105.569H113.672Z" fill="#F11F9D" />
+			<path d="M8.86411 25.0793L66.2368 29.0876L52.5073 42.8201L83.2333 73.5461L97.9385 75.05L124.279 101.391L96.2339 112.446L85.1788 140.495L58.8378 114.154L57.3339 99.4486L26.6049 68.7226L12.8755 82.4489L8.86411 25.0793Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
+			<path d="M113.672 105.569L96.2247 112.446L85.1696 140.492L105.628 125.975L113.669 105.569H113.672Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
+			<path d="M124.276 101.397L97.9355 75.0561L118.391 60.5362L144.732 86.8771L124.276 101.397Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
+			<path d="M97.9386 75.0499L83.2364 73.5461L103.695 59.0292L118.394 60.5331L97.9386 75.0469V75.0499Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
+			<path d="M66.2367 29.0876L8.86411 25.0824L29.3224 10.5594L86.6919 14.5738L66.2367 29.0876Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
+			<path d="M52.5136 42.8201L66.243 29.0907L70.6404 25.9718L72.9688 28.3033L103.698 59.0323L83.2427 73.5492L52.5136 42.8232V42.8201Z" stroke="black" stroke-width="5.37607" stroke-linejoin="round" />
 		</svg>
 
 

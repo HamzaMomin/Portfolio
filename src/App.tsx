@@ -4,6 +4,8 @@ import Work from "./components/work"
 import Certs from "./components/certs"
 import Projects from "./components/projects"
 import Navbar from "./components/navbar"
+import ContactMe from "./components/contact";
+
 
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
         <Work />
         <Certs />
         <Projects />
+        <ContactMe />
         {/* Add more sections here if needed, e.g. <Projects />, <Contact /> */}
       </div>
       <div className="hidden md:block">
@@ -26,6 +29,7 @@ export default function App() {
           <Route path="/Work" element={<Work />} />
           <Route path="/Certs" element={<Certs />} />
           <Route path="/Projects" element={<Projects />} />
+         <Route path="/ContactMe" element={<ContactMe />} />
         </Routes>
       </div>
     </>

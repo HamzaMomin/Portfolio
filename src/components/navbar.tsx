@@ -130,8 +130,16 @@ export default function Navbar() {
           </li>
 
           <li
-            onClick={() => handleScrollAndBgChange("Contact", "#00FF99")}
-            className="cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 border-black bg-[#fff] rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] hover:border-[#292929] hover:shadow-[2px_2px_0px_#292929]"
+            onClick={() => {
+              navigate("/ContactMe");
+              setIsOpen(false);
+              document.body.style.backgroundColor = "#604652";
+            }}
+           className={`cursor-pointer text-black text-[16px] font-bold px-6 py-2 border-2 bg-[#fff] rounded-full transition-transform hover:translate-y-[-4px] hover:translate-x-[4px] ${
+              location.pathname === "/ContactMe"
+                 ? "border-[#ff0000] shadow-[2px_2px_0px_0px_#ff0000]"
+                : "border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:border-[#ff0000] hover:shadow-[2px_2px_0px_#ff0000]"
+            }`}
           >
             Contact
           </li>

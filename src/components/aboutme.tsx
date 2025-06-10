@@ -87,12 +87,14 @@ export default function AboutMe() {
             <a
               href="https://github.com/HamzaMomin"
               className="flex justify-center"
+              target="_blank"
             >
               <GitHub />
             </a>
             <a
               href="https://www.linkedin.com/in/hamzamomin/"
               className="flex justify-center"
+              target="_blank"
             >
               <Linkedin />
             </a>
