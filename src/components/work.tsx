@@ -85,26 +85,25 @@ const WorkExperience = () => {
           <Slider ref={sliderRef} {...settings}>
             {experiences.map((exp, index) => (
               <div key={index} className="px-2 !md:px-0 ">
-                <div className="bg-white rounded-lg p-2 mb-2 border-5 border-black md:mx-24 lg:mx-24 sm:mx-auto">
-
-                  <h3 className="text-xl font-semibold mb-2  text-left bg-[#E9E484] p-4 w-full inline-block rounded-b-4xl border-2">{exp.title}</h3>
-                  <p className="text-black text-xl flex items-start">{exp.role}</p>
-
-                  <p className="text-gray-700 flex items-start cursor-pointer">{exp.company} | {exp.date}</p>
-
-                  <ul className="list-disc text-left list-inside mt-4 space-y-2 text-black text-[18px]">
+                <div className="relative p-4 bg-gray-200 rounded-3xl max-w-3xl w-full mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-5 border-black flex flex-col items-center justify-between gap-6">
+                  <div className='w-full border-b-2 border-black pb-2'>
+                    <h3 className="text-xl font-semibold mb-2 text-left  w-full ">{exp.title}</h3>
+                    <p className="text-black text-xl flex items-start ">{exp.role}</p>
+                    <p className="flex items-start cursor-pointer mt-1 bg-blue-300 shadow-[2px_3px_0px_0px_rgba(30,64,175,0.5)] px-3 py-2 rounded-lg text-black font-semibold w-fit">
+                      {exp.company} | {exp.date}
+                    </p>
+                  </div>
+                  <ul className="list-disc text-left list-inside space-y-1 text-black text-[18px] w-full">
                     {exp.des.map((point, i) => (
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
-
-
                 </div>
 
               </div>
             ))}
           </Slider>
-          <div className="flex lg:justify-center lg:items-end md:justify-center md:items-center  sm:justify-end sm:items-end">
+          <div className="flex lg:justify-center lg:items-end md:justify-center md:items-center mt-4 sm:justify-end sm:items-end">
             <button
               onClick={previous}
               className="bg-orange-500 border-2  p-2 rounded-full hover:bg-orange-600 transition-colors mr-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
