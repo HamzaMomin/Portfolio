@@ -3,6 +3,7 @@ import AboutMe from "./components/aboutme"
 import Work from "./components/work"
 import Certs from "./components/certs"
 import Projects from "./components/projects"
+import PixelArt from "./components/pixelart"
 import Navbar from "./components/navbar"
 import ContactMe from "./components/contact";
 
@@ -19,6 +20,7 @@ export default function App() {
         <Work />
         <Certs />
         <Projects />
+        <PixelArt />
         <ContactMe />
         {/* Add more sections here if needed, e.g. <Projects />, <Contact /> */}
       </div>
@@ -29,6 +31,7 @@ export default function App() {
           <Route path="/Work" element={<Work />} />
           <Route path="/Certs" element={<Certs />} />
           <Route path="/Projects" element={<Projects />} />
+          <Route path="/PixelArt" element={<PixelArt />} />
          <Route path="/ContactMe" element={<ContactMe />} />
         </Routes>
       </div>
