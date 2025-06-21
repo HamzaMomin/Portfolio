@@ -1,91 +1,106 @@
 @import "tailwindcss";
+
 :root {
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
-
+  font-family: "Lexend", sans-serif;
+ 
 }
 
-/* body{
-  background-image: url("/Group 9.jpg") !important;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
-} */
-
-#hackerText{
-  font-family: "Lexend Zetta", sans-serif;
-}
+body {
+    background-color: #1C723F;
+  }
 
 
- @keyframes marquee {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-100%);
-            }
-          }
-          .animate-marquee {
-            display: flex;
-            animation: marquee 10s linear infinite;
-            width: max-content;
-          }
-
-
-/* styles.css */
-/* .contact-background {
-  background-image: url("/public/Group\ 10.svg");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  border: 2px dotted red;
-}
-
-.pixel-background {
-  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%221440%22%20height%3D%22981%22%20viewBox%3D%220%200%201440%20981%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20y%3D%22474%22%20width%3D%221440%22%20height%3D%22507%22%20fill%3D%22%23F6FF54%22/%3E%3Cpath%20d%3D%22M1002.98%20415L416.446%20415C196.437%20415%20132.5%20424.883%2029%20424.883C-4.19617e-05%20424.883%20-0.000191443%20454.959%200%20485.5C0.000668848%20591.5%200.000111611%20608.212%200.000111611%20608.212C0.000111611%20608.212%2070.7161%20666.067%20152.5%20666.067C234.284%20666.067%20292.515%20534.44%20388%20547.079C452.734%20555.647%20500.106%20659.456%20564.999%20666.067C651.229%20674.852%20693.459%20547.021%20779.999%20547.079C866.349%20547.137%20916.635%20665.115%201002.98%20666.067C1092.56%20667.055%201143.92%20546.091%201233.5%20547.079C1294.71%20547.754%201440%20666.067%201440%20666.067V415L1002.98%20415Z%22%20fill%3D%22%231C022D%22/%3E%3Crect%20width%3D%221440%22%20height%3D%22432.64%22%20fill%3D%22%234F48C5%22/%3E%3Cpath%20d%3D%22M416.446%20126.649C129.951%20104.661%200%20225.147%200%20225.147V575.504C0%20575.504%2070.716%20623.64%20152.5%20623.64C234.284%20623.64%20292.515%20514.126%20388%20524.642C452.734%20531.771%20500.106%20618.139%20565%20623.64C651.23%20630.949%20693.46%20524.593%20780%20524.642C866.35%20524.69%20916.636%20622.847%201002.98%20623.64C1092.56%20624.462%201143.92%20523.82%201233.5%20524.642C1294.71%20525.203%201440%20623.64%201440%20623.64V159.459C1440%20159.459%201260.88%20316.146%201002.98%20316.146C745.087%20316.146%20702.941%20148.638%20416.446%20126.649Z%22%20fill%3D%22%234F48C5%22/%3E%3C/svg%3E");
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  border: 2px solid black;
+#hackerText {
+  font-family: "Poppins", sans-serif;
 }
 
 
-.projects-background {
-  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%221440%22%20height%3D%22906%22%20viewBox%3D%220%200%201440%20906%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M416.446%20597.778C129.951%20624.206%200%20479.39%200%20479.39V58.2881C0%2058.2881%2070.716%200.432922%20152.5%200.432922C234.284%200.432922%20292.515%20132.06%20388%20119.421C452.734%20110.853%20500.106%207.04449%20565%200.432922C651.23%20-8.35248%20693.46%20119.479%20780%20119.421C866.35%20119.363%20916.636%201.38538%201002.98%200.432922C1092.56%20-0.555176%201143.92%20120.409%201233.5%20119.421C1294.71%20118.746%201440%200.432922%201440%200.432922V558.343C1440%20558.343%201260.88%20370.017%201002.98%20370.017C745.087%20370.017%20702.941%20571.349%20416.446%20597.778Z%22%20fill%3D%22%231C022D%22/%3E%3Crect%20y%3D%22386%22%20width%3D%221440%22%20height%3D%22520%22%20fill%3D%22%234F48C5%22/%3E%3Cpath%20d%3D%22M416.446%20639.778C129.951%20666.206%200%20521.39%200%20521.39V100.288C0%20100.288%2070.716%2042.4329%20152.5%2042.4329C234.284%2042.4329%20292.515%20174.06%20388%20161.421C452.734%20152.853%20500.106%2049.0446%20565%2042.4329C651.23%2033.6475%20693.46%20161.479%20780%20161.421C866.35%20161.363%20916.636%2043.3854%201002.98%2042.4329C1092.56%2041.4448%201143.92%20162.409%201233.5%20161.421C1294.71%20160.746%201440%2042.4329%201440%2042.4329V600.343C1440%20600.343%201260.88%20412.017%201002.98%20412.017C745.087%20412.017%20702.941%20613.349%20416.446%20639.778Z%22%20fill%3D%22%234F48C5%22/%3E%3C/svg%3E");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
-} */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
 
-.contact-background{
-  background-image: linear-gradient(to right, #54b6d0, #4698b7, #3c7c9d, #326082, #294666);
+  to {
+    transform: translateX(-100%);
+  }
 }
 
-.pixel-background{
-  background-image: linear-gradient(to right top, #f6ff54, #faa13c, #ca514c, #761d4b, #1c022d);
+.animate-marquee {
+  display: flex;
+  animation: marquee 10s linear infinite;
+  width: max-content;
 }
 
-.projects-background{
-  background-image: linear-gradient(to bottom, #4f48c5, #5b41b8, #633bac, #6935a0, #6c2f94);
+
+
+
+@Media (max-width: 470px) {
+
+  body {
+    background-color: #1C723F;
+  }
+
+  #About {
+    padding: 0px 24px !important;
+
+  }
+
+  #Work {
+    padding: 0px 24px !important;
+
+  }
+
+  #ContactMe {
+    padding: 0px 24px !important;
+    margin-bottom: 24px;
+  }
+
+  .BackSVG2 {
+    width: 70% !important;
+    height: 100px !important;
+
+  }
+
+
+
 }
 
-.certs-background{
-  background-image: linear-gradient(to top, #00d48c, #3db865, #4c9d43, #518325, #4f6904);
-}
-.cards{
-  background-image: linear-gradient(to right top, #2368cf, #3c6ed1, #4e74d3, #5c7bd4, #6981d6);
+
+.StarSVG {
+  animation: rotate-clockwise 6s linear infinite;
 }
 
-.work-background{
-  background-image: linear-gradient(to bottom, #ffc75f, #d7bf3f, #aab622, #76ad0d, #2ba311);
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
 
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.home-background{
-  background-image: linear-gradient(to right bottom, #f6ff77, #ffdd5d, #ffba51, #ff9751, #fa7558);
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
 }
 
-.nav-background{
-  background-image: linear-gradient(to right bottom, #ddff77, #85fba5, #0befd5, #00dcf4, #58c5f8);
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Adjust the distance for the float effect */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
+
+
