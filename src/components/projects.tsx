@@ -28,6 +28,15 @@ const project: ProjectCard[] = [
     demo: "https://phostrack.com/",
   },
   {
+    ProjectName: "Poistivus",
+    color: "bg-[#D6FFB3]",
+    des: "Convert a Figma design to a frontend page using CSS, Bootstrap, and a JavaScript.",
+    image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1102&h=750&dpr=1",
+    Tags: ["HTML", "CSS", "Bootstrap", "JavaScript", "Figma"],
+    viewProject: "https://github.com/HamzaMomin/Poistivus",
+    demo: "https://github.com/HamzaMomin/Poistivus",
+  },
+  {
     ProjectName: "Real Estate Insignia",
     color: "bg-[#E9B3FF]",
     des: "A mobile app & web based Dashboard for Real Estate Fraud Detection.",
@@ -127,10 +136,10 @@ const Projects = () => {
           <Slider ref={sliderRef} {...settings}>
             {project.map((exp, index) => (
               <div key={index} className="px-2 !md:px-0">
-                <div className={`rounded-lg w-[320px] h-[350px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto  ${exp.color}`}
+                <div className={`rounded-lg w-[320px] h-[300px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto  ${exp.color}`}
                 >
                   {/* Project Image */}
-                  <img src={exp.image} alt={exp.ProjectName} className="w-full h-20 object-cover rounded-t-lg mb-2 border-b-2 border-black" />
+                  {/* <img src={exp.image} alt={exp.ProjectName} className="w-full h-20 object-cover rounded-t-lg mb-2 border-b-2 border-black" /> */}
                   {/* Project Name */}
                   <h3 className="text-black text-start text-lg font-bold mt-2 mb-1 underline">{exp.ProjectName}</h3>
                   {/* Project Description (if you want to add, add a 'desc' field to ProjectCard) */}
