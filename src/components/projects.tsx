@@ -47,12 +47,21 @@ const project: ProjectCard[] = [
   },
   {
     ProjectName: "Gun Lord / Gun Lord Club",
-    color: "bg-[#D6FFB3]",
+    color: "bg-[#E5E0D8]",
     des: "A collection of Pixeled animated Guns NFTs on Polygon and Ethereum Blockchain.",
     image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     Tags: ["Python", "Polygon", "ERC-721", "Blockchain", "JSON"],
     viewProject: "https://opensea.io/collection/gunlord",
     demo: "https://opensea.io/collection/gunlordclub",
+  },
+  {
+    ProjectName: "Estac Web Monitoring Landing Page",
+    color: "bg-[#DEE791]",
+    des: "A landing page for Estac Web Monitoring, a web monitoring service.",
+    image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    Tags: ["HTML", "CSS", "Bootstrap", "GitHub",],
+    viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
+    demo: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
   }
 ]
 
@@ -128,7 +137,7 @@ const Projects = () => {
       </div>
 
 
-      <div className="max-w-4xl  mx-auto ">
+      <div className="w-full md:w-[90vw] lg:w-[80vw] xl:w-[70vw] mx-auto">
         {/* Mobile-only heading */}
 
         <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start mt-8">Projects</span>
