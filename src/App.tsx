@@ -24,7 +24,7 @@ export default function App() {
           property="og:description"
           content="Explore the portfolio of Hamza Momin – a frontend developer passionate about building clean, responsive, and modern web interfaces."
         />
-        <meta property="og:image" content="https://hamzamomin.com/Me.png" />
+        <meta property="og:image" content="https://hamzamomin.com/Me.webp" />
         <meta property="og:url" content="https://hamzamomin.com"/>
         <meta property="og:type" content="website" />
 
@@ -35,7 +35,7 @@ export default function App() {
           name="twitter:description"
           content="Explore the portfolio of Hamza Momin – a frontend developer passionate about building clean, responsive, and modern web interfaces."
         />
-        <meta name="twitter:image" content="https://hamzamomin.com/Me.png" />
+        <meta name="twitter:image" content="https://hamzamomin.com/Me.webp" />
       </Helmet>
 
       {/*  Navbar */}
