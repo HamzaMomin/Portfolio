@@ -137,7 +137,7 @@ const Projects = () => {
       </div>
 
 
-      <div className="w-full md:w-[90vw] lg:w-[80vw] xl:w-[70vw] mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Mobile-only heading */}
 
         <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start mt-8">Projects</span>
@@ -145,7 +145,7 @@ const Projects = () => {
           <Slider ref={sliderRef} {...settings}>
             {project.map((exp, index) => (
               <div key={index} className="px-2 !md:px-0">
-                <div className={`rounded-lg w-[320px] h-[300px] flex flex-col  p-2 border-4 border-black md:mx-24 lg:mx-24 sm:mx-auto  ${exp.color}`}
+                <div className={`rounded-lg w-[320px] h-[300px] flex flex-col  p-2 border-4 border-black md:mx-6 lg:mx-6 sm:mx-auto  ${exp.color}`}
                 >
                   {/* Project Image */}
                   {/* <img src={exp.image} alt={exp.ProjectName} className="w-full h-20 object-cover rounded-t-lg mb-2 border-b-2 border-black" /> */}
