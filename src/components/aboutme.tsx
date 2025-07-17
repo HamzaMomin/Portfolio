@@ -40,7 +40,7 @@ export default function AboutMe() {
 
 
   const handleViewResume = () => {
-    window.open("/Hamza Momin.pdf", "_blank");
+    window.open("/Hamza Momin_CV.pdf", "_blank");
   };
 
 
