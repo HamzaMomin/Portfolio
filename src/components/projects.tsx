@@ -34,7 +34,7 @@ const project: ProjectCard[] = [
     image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1102&h=750&dpr=1",
     Tags: ["HTML", "CSS", "Bootstrap", "JavaScript", "Figma"],
     viewProject: "https://github.com/HamzaMomin/Poistivus",
-    demo: "https://github.com/HamzaMomin/Poistivus",
+    demo: "https://hamzamomin.github.io/Poistivus/",
   },
   {
     ProjectName: "Real Estate Insignia",
@@ -61,7 +61,7 @@ const project: ProjectCard[] = [
     image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     Tags: ["HTML", "CSS", "Bootstrap", "GitHub",],
     viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
-    demo: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
+    demo: "https://hamzamomin.github.io/Web-Monitoring-Landing-Page-Design/",
   }
 ]
 
@@ -119,7 +119,7 @@ const Projects = () => {
       {
         breakpoint: 440,
         settings: {
-          slidesToShow: 0.9,
+          slidesToShow: 0.95,
           slidesToScroll: 1,
         },
       },
@@ -128,8 +128,8 @@ const Projects = () => {
   };
 
   return (
-    <div id='Projects' className=" py-4 px-2 mt-16 sm:mt-16 md:mt-0 lg:mt-0 ">
-      {/* Background SVG - Responsive, always top left */}
+  <div id='Projects' className="py-4 px-0 mt-16 sm:mt-16 md:mt-0 lg:mt-0">
+      {/* Background SVG */}
       <div
         className="StarSVG absolute z-[-1] right-[0px] top-[235%] md:right-[80px] md:top-[25px] "
       >
@@ -137,24 +137,56 @@ const Projects = () => {
       </div>
 
 
-      <div className="max-w-6xl mx-auto">
-        {/* Mobile-only heading */}
-
+  <div className="w-full max-w-none mx-0">
+        {/* Mobile heading */}
         <span className="block  md:hidden !text-[40px] font-bold mb-2 text-start mt-8">Projects</span>
-        <div className="relative">
-          <Slider ref={sliderRef} {...settings}>
+        <div className="relative overflow-x-visible">
+          <Slider
+            ref={sliderRef}
+            {...{
+              ...settings,
+              slidesToShow: 4,
+              centerMode: false,
+              centerPadding: '0px',
+              responsive: [
+                {
+                  breakpoint: 1200,
+                  settings: {
+                    slidesToShow: 3,
+                    centerMode: false,
+                    centerPadding: '0px',
+                  },
+                },
+                {
+                  breakpoint: 900,
+                  settings: {
+                    slidesToShow: 2,
+                    centerMode: false,
+                    centerPadding: '0px',
+                  },
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                    centerMode: false,
+                    centerPadding: '0px',
+                  },
+                },
+              ],
+            }}
+          >
             {project.map((exp, index) => (
-              <div key={index} className="px-2 !md:px-0">
-                <div className={`rounded-lg w-[320px] h-[300px] flex flex-col  p-2 border-4 border-black md:mx-6 lg:mx-6 sm:mx-auto  ${exp.color}`}
+              <div key={index} className="px-1  ">
+                <div
+                  className={`rounded-xl  w-[100%] h-[340px] flex flex-col p-2 border-4 border-black ${exp.color}`}
+                  style={{ minWidth: 0, margin: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.10)' }}
                 >
-                  {/* Project Image */}
-                  {/* <img src={exp.image} alt={exp.ProjectName} className="w-full h-20 object-cover rounded-t-lg mb-2 border-b-2 border-black" /> */}
                   {/* Project Name */}
                   <h3 className="text-black text-start text-lg font-bold mt-2 mb-1 underline">{exp.ProjectName}</h3>
-                  {/* Project Description (if you want to add, add a 'desc' field to ProjectCard) */}
                   <p className="text-gray-700 text-start text-sm mb-2 font-light">{exp.des}</p>
                   {/* Tags */}
-                  <div className="flex flex-wrap justify-start gap-2 mt-2">
+                  <div className="flex flex-wrap justify-start gap-1 mt-2">
                     {exp.Tags.map((tag, i) => {
                       const tagStyles = [
                         { bg: 'bg-pink-200', text: 'text-pink-800', shadow: '#9d174d' },
@@ -166,9 +198,7 @@ const Projects = () => {
                         { bg: 'bg-red-200', text: 'text-red-800', shadow: '#991b1b' },
                         { bg: 'bg-gray-200', text: 'text-gray-800', shadow: '#1f2937' },
                       ];
-
                       const style = tagStyles[i % tagStyles.length];
-
                       return (
                         <span
                           key={i}
@@ -183,14 +213,12 @@ const Projects = () => {
                     })}
                   </div>
                   <div className='flex justify-start items-start mt-4 gap-2'>
-                    {/* View Project Button */}
-                    <a href={exp.viewProject} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold italic inline-flex text-[12px] bg-[#ffd900] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#F39E60] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-
+                    {/* View Project */}
+                    <a href={exp.viewProject} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold italic inline-flex text-[12px] bg-[#ffd900] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#F39E60] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                       View Project
                       <Github className="ml-2 w-4 h-4" color='black' />
                     </a>
-
-                    <a href={exp.demo} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold  italic inline-flex text-[12px] bg-[#f85d58] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#f79494] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <a href={exp.demo} target="_blank" rel="noopener noreferrer" className="mt-4 font-bold  italic inline-flex text-[12px] bg-[#f85d58] border-2  text-black  px-2 py-2 rounded-full hover:bg-[#f79494] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                       Demo
                       <ExternalLink className='ml-2 w-4 h-4' color='black' />
                     </a>
@@ -199,17 +227,17 @@ const Projects = () => {
               </div>
             ))}
           </Slider>
-          {/* Navigation Buttons */}
-          <div className="flex lg:justify-end lg:items-end md:justify-end md:items-end sm:justify-center sm:items-end justify-center items-end mt-4">
+          {/* Navigation */}
+          <div className="flex justify-center items-end mt-4 lg:justify-end md:justify-end">
             <button
               onClick={previous}
-              className="bg-orange-500 border-2 p-2 rounded-full hover:bg-orange-600 transition-colors mr-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="bg-orange-500 border-2 p-2 rounded-full hover:bg-orange-600 transition-colors mr-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
             >
               <FaAngleLeft className="w-6 h-6 text-white" />
             </button>
             <button
               onClick={next}
-              className="bg-orange-500 border-2 p-2 rounded-full hover:bg-orange-600 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="bg-orange-500 border-2 p-2 rounded-full hover:bg-orange-600 transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
             >
               <FaAngleRight className="w-6 h-6 text-white" />
             </button>
@@ -243,13 +271,12 @@ export default Projects;
 function Svg() {
   return (
     <svg width="100" height="100" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M37.1455 37.4062C53.3327 36.2622 69.9009 41.8774 82.2725 54.249C94.6435 66.6203 100.257 83.1874 99.1133 99.374C82.9266 100.518 66.3596 94.9043 53.9883 82.5332C41.6167 70.1616 36.0014 53.5934 37.1455 37.4062Z" fill="#3BB3BD" stroke="black" stroke-width="4" />
-      <path d="M116.988 54.249C129.36 41.8777 145.926 36.2625 162.113 37.4062C163.257 53.5934 157.644 70.1616 145.272 82.5332C132.901 94.9048 116.333 100.518 100.146 99.374C99.0017 83.1872 104.617 66.6204 116.988 54.249Z" fill="#BCA47F" stroke="black" stroke-width="4" />
-      <path d="M37.1455 161.635C53.3327 162.779 69.9009 157.164 82.2725 144.792C94.6435 132.421 100.257 115.854 99.1133 99.667C82.9266 98.5232 66.3596 104.137 53.9883 116.508C41.6167 128.879 36.0014 145.448 37.1455 161.635Z" fill="#FFC700" stroke="black" stroke-width="4" />
-      <path d="M116.988 144.792C129.36 157.163 145.926 162.779 162.113 161.635C163.257 145.448 157.644 128.879 145.272 116.508C132.901 104.136 116.333 98.5229 100.146 99.667C99.0017 115.854 104.617 132.421 116.988 144.792Z" fill="#BC7F7F" stroke="black" stroke-width="4" />
+      <path d="M37.1455 37.4062C53.3327 36.2622 69.9009 41.8774 82.2725 54.249C94.6435 66.6203 100.257 83.1874 99.1133 99.374C82.9266 100.518 66.3596 94.9043 53.9883 82.5332C41.6167 70.1616 36.0014 53.5934 37.1455 37.4062Z" fill="#3BB3BD" stroke="black" strokeWidth="4" />
+      <path d="M116.988 54.249C129.36 41.8777 145.926 36.2625 162.113 37.4062C163.257 53.5934 157.644 70.1616 145.272 82.5332C132.901 94.9048 116.333 100.518 100.146 99.374C99.0017 83.1872 104.617 66.6204 116.988 54.249Z" fill="#BCA47F" stroke="black" strokeWidth="4" />
+      <path d="M37.1455 161.635C53.3327 162.779 69.9009 157.164 82.2725 144.792C94.6435 132.421 100.257 115.854 99.1133 99.667C82.9266 98.5232 66.3596 104.137 53.9883 116.508C41.6167 128.879 36.0014 145.448 37.1455 161.635Z" fill="#FFC700" stroke="black" strokeWidth="4" />
+      <path d="M116.988 144.792C129.36 157.163 145.926 162.779 162.113 161.635C163.257 145.448 157.644 128.879 145.272 116.508C132.901 104.136 116.333 98.5229 100.146 99.667C99.0017 115.854 104.617 132.421 116.988 144.792Z" fill="#BC7F7F" stroke="black" strokeWidth="4" />
     </svg>
 
   );
 }
-
-
+// ...existing code...
