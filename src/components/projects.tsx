@@ -40,7 +40,7 @@ const project: ProjectCard[] = [
     ProjectName: "Real Estate Insignia",
     color: "bg-[#E9B3FF]",
     des: "A mobile app & web based Dashboard for Real Estate Fraud Detection.",
-    image: "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg",
+    image: "https://loremflickr.com/800/600/doodle,design?lock=102",
     Tags: ["Flutter", "Firebase", "University Final Year Project"],
     viewProject: "https://github.com/HamzaMomin/Real_Estate_Insignia",
     demo: "https://github.com/HamzaMomin/Real_Estate_Insignia",
@@ -58,10 +58,28 @@ const project: ProjectCard[] = [
     ProjectName: "Estac Web Monitoring Landing Page",
     color: "bg-[#DEE791]",
     des: "A landing page for Estac Web Monitoring, a web monitoring service.",
-    image: "https://images.pexels.com/photos/18096281/pexels-photo-18096281/free-photo-of-pexels-website-open-on-a-laptop-screen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "https://loremflickr.com/800/600/illustration,abstract?lock=103",
     Tags: ["HTML", "CSS", "Bootstrap", "GitHub",],
     viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
     demo: "https://hamzamomin.github.io/Web-Monitoring-Landing-Page-Design/",
+  },
+  {
+    ProjectName: "Hamza Momin Portfolio",
+    color: "bg-[#BADFDB]",
+    des: "A personal portfolio website showcasing my projects and skills.",
+    image: "https://loremflickr.com/800/600/portfolio,sketch,doodle?lock=106",
+    Tags: ["React", "Tailwind CSS", "Pnmp", "GitHub","Cloudflare"],
+    viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
+    demo: "https://hamzamomin.github.io/Web-Monitoring-Landing-Page-Design/",
+  },
+  {
+    ProjectName: "Eureka Webflow Landing Page",
+    color: "bg-[#F49BAB]",
+    des: "Landing Page Design using Webflow, Figma and Gsap for scroll animations.",
+   image: "https://loremflickr.com/800/600/webflow,figma,illustration,doodle?lock=107",
+    Tags: ["WebFlow", "Gsap", "Responsive layout", "Figma"],
+    viewProject: "https://eureka-e40f4e.webflow.io/",
+    demo: "https://eureka-e40f4e.webflow.io/",
   }
 ]
 
@@ -182,6 +200,10 @@ const Projects = () => {
                   className={`rounded-xl  w-[100%] h-[340px] flex flex-col p-2 border-4 border-black ${exp.color}`}
                   style={{ minWidth: 0, margin: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.10)' }}
                 >
+                  {/* Project Image */}
+                  <div className=" overflow-hidden rounded-lg ">
+                    <img src={exp.image} alt={exp.ProjectName} className="w-auto h-auto object-cover center" />
+                  </div>
                   {/* Project Name */}
                   <h3 className="text-black text-start text-lg font-bold mt-2 mb-1 underline">{exp.ProjectName}</h3>
                   <p className="text-gray-700 text-start text-sm mb-2 font-light">{exp.des}</p>
@@ -228,7 +250,7 @@ const Projects = () => {
             ))}
           </Slider>
           {/* Navigation */}
-          <div className="flex justify-center items-end mt-4 lg:justify-end md:justify-end">
+          <div className="flex justify-center items-end mt-4 lg:justify-end md:justify-end mr-6">
             <button
               onClick={previous}
               className="bg-orange-500 border-2 p-2 rounded-full hover:bg-orange-600 transition-colors mr-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
