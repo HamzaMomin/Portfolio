@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import AboutMe from "./components/aboutme";
 import Work from "./components/work";
@@ -8,7 +8,23 @@ import PixelArt from "./components/pixelart";
 import Navbar from "./components/navbar";
 import ContactMe from "./components/contact";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import {  trackPageView , initGA } from "./analytics";
+
+
 export default function App() {
+const location = useLocation();
+
+  // Initialize Google Analytics once on mount
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  // Track page views whenever route changes (desktop view)
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
   return (
     <>
       {/* ✅ Default SEO Meta Tags */}
