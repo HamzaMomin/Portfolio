@@ -68,7 +68,7 @@ const project: ProjectCard[] = [
     color: "bg-[#BADFDB]",
     des: "A personal portfolio website showcasing my projects and skills.",
     image: "https://loremflickr.com/800/600/portfolio,sketch,doodle?lock=106",
-    Tags: ["React", "Tailwind CSS", "Pnmp", "GitHub","Cloudflare"],
+    Tags: ["React", "Tailwind CSS", "GitHub","Cloudflare"],
     viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
     demo: "https://hamzamomin.github.io/Web-Monitoring-Landing-Page-Design/",
   },
@@ -77,9 +77,18 @@ const project: ProjectCard[] = [
     color: "bg-[#F49BAB]",
     des: "Landing Page Design using Webflow, Figma and Gsap for scroll animations.",
    image: "https://loremflickr.com/800/600/webflow,figma,illustration,doodle?lock=107",
-    Tags: ["WebFlow", "Gsap", "Responsive layout", "Figma"],
+    Tags: ["WebFlow", "Gsap", "Figma"],
     viewProject: "https://eureka-e40f4e.webflow.io/",
     demo: "https://eureka-e40f4e.webflow.io/",
+  },
+  {
+    ProjectName: "Forecaster Webflow Landing Page",
+    color: "bg-[#A7AAE1]",
+    des: "Full responsive landing page design using Webflow and Figma, and client-first approach.",
+   image: "https://loremflickr.com/800/600/webflow,figma,illustration,doodle?lock=107",
+    Tags: ["WebFlow", "Responsive layout", "Figma"],
+    viewProject: "https://forecaster-870aa6.webflow.io/",
+    demo: "https://forecaster-870aa6.webflow.io/",
   }
 ]
 
