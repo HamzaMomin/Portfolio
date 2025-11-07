@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { trackEvent } from '../analytics';
 
 function ContactMe() {
 
@@ -129,7 +128,7 @@ function ContactMe() {
           </textarea>
 
           <div className="w-full flex justify-end">
-            <button onClick={() => trackEvent("clicked_contact", { category: "Contact" })} disabled={isSubmitting} type="submit" className="cursor-pointer  mb-8 w-full lg:w-40 h-12 bg-yellow-400 text-black font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black flex items-center justify-center space-x-2 hover:bg-yellow-500 transition">
+            <button disabled={isSubmitting} type="submit" className="cursor-pointer  mb-8 w-full lg:w-40 h-12 bg-yellow-400 text-black font-semibold rounded-full shadow-[4px_4px_0px_#000] border border-black flex items-center justify-center space-x-2 hover:bg-yellow-500 transition">
               <span></span>
 
 
