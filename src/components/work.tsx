@@ -15,6 +15,18 @@ interface ExperienceCard {
 
 const experiences: ExperienceCard[] = [
   {
+    title: "Web Developer",
+    role: "Full-time",
+    company: "Xgrid.co",
+    date: "Sep 2025 - Present",
+    des: [
+      "Worked as a Web Developer on projects built with Webflow, WordPress, PHP, Unbounce, and React.",
+      "Performed QA and manual testing across multiple websites to ensure functionality and responsiveness.",
+      "Optimized website performance, improving page speed from 60% to 92%.",
+      "Developed and customized front-end layouts using Bricks Builder and modern design practices."
+    ]
+  },
+  {
     title: "Junior WordPress Developer",
     role: "Full-time",
     company: "Xgrid.co",
@@ -93,7 +105,7 @@ const WorkExperience = () => {
                       {exp.company} | {exp.date}
                     </p>
                   </div>
-                  <ul className="list-disc text-left list-inside space-y-1 text-black text-[18px] w-full">
+                  <ul className="list-disc text-left list-inside space-y-1 text-black text-[16px] w-full">
                     {exp.des.map((point, i) => (
                       <li key={i}>{point}</li>
                     ))}
@@ -118,7 +130,7 @@ const WorkExperience = () => {
             </button>
           </div>
 
-          <div className="flex justify-end items-end mt-4">
+          <div className="flex justify-end items-end mt-2">
             <svg width="503" height="47" viewBox="0 0 503 47" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 44C80.2556 19.5985 287.813 -19.4606 500 19.5152" stroke="black" stroke-width="5" stroke-linecap="round" />
             </svg>
