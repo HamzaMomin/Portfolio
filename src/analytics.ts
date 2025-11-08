@@ -5,7 +5,7 @@ import ReactGA from "react-ga4";
  * Your Google Analytics 4 Measurement ID
  * Example: G-ABCD1234
  */
-const GA_MEASUREMENT_ID = "G-RB6N5X1SSE";
+const GA_MEASUREMENT_ID = "G-E6H9ZJF4WR";
 
 /**
  * Initialize Google Analytics (call once in your app root)
