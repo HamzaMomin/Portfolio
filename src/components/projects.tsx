@@ -69,8 +69,8 @@ const project: ProjectCard[] = [
     des: "A personal portfolio website showcasing my projects and skills.",
     image: "https://loremflickr.com/800/600/portfolio,sketch,doodle?lock=106",
     Tags: ["React", "Tailwind CSS", "GitHub","Cloudflare"],
-    viewProject: "https://github.com/HamzaMomin/Web-Monitoring-Landing-Page-Design",
-    demo: "https://hamzamomin.github.io/Web-Monitoring-Landing-Page-Design/",
+    viewProject: "https://github.com/HamzaMomin/Portfolio",
+    demo: "https://hamzamomin.com/",
   },
   {
     ProjectName: "Eureka Webflow Landing Page",
