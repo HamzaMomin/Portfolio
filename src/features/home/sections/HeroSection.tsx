@@ -1,37 +1,110 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import Section from "../../../shared/components/Section";
+
+function TrackingEye({
+  top,
+  left,
+  size,
+  offset,
+}: {
+  top: string;
+  left: string;
+  size: string;
+  offset: { x: number; y: number };
+}) {
+  return (
+    <span
+      className="absolute z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-[3px] border-black bg-white"
+      style={{ top, left, width: size, height: size }}
+    >
+      <span
+        className="absolute top-1/2 left-1/2 rounded-full bg-black"
+        style={{
+          width: "4.2cqw",
+          height: "4.2cqw",
+          transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px))`,
+        }}
+      />
+    </span>
+  );
+}
 
 export default function HeroSection() {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMove = (event: MouseEvent) => {
+      const frame = frameRef.current;
+      if (!frame) return;
+      const rect = frame.getBoundingClientRect();
+      const dx = event.clientX - (rect.left + rect.width / 2);
+      const dy = event.clientY - (rect.top + rect.height * 0.46);
+      const distance = Math.hypot(dx, dy) || 1;
+      const smallEye = rect.width * 0.105;
+      const pupil = rect.width * 0.042;
+      const reach = Math.max(2, smallEye / 2 - pupil / 2 - 4);
+      setOffset({
+        x: (dx / distance) * reach,
+        y: (dy / distance) * reach,
+      });
+    };
+
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
-    <Section id="hero" className="pt-28 pb-16 md:pt-36">
-      <div className="text-left">
-        <p className="mb-4 text-sm font-medium uppercase tracking-widest text-neutral-500">
-          Frontend Developer
-        </p>
-        <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-neutral-900 md:text-6xl">
-          Hi, I&apos;m Hamza Momin — I build thoughtful web experiences.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg text-neutral-600">
-          This portfolio blends a single-page flow with dedicated pages. Explore
-          sections below or jump to full pages when you need more detail.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <button
-            type="button"
-            onClick={() =>
-              document
-                .getElementById("projects")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="neo-pill neo-pill-filled text-sm"
-          >
-            View projects
-          </button>
-          <Link to="/contact" className="neo-pill text-sm">
-            Contact me
-          </Link>
+    <section
+      id="hero"
+      className="scroll-mt-24 bg-section-hero px-4 py-14 sm:px-6 md:px-12 md:py-20 lg:px-24 lg:py-24"
+    >
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="text-left">
+          <p className="neo-sticker mb-6 bg-section-reviews">Software Engineer</p>
+          <h1 className="max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Hi, I&apos;m Hamza Momin — I build software, from web products to games.
+          </h1>
+          <p className="mt-6 max-w-xl border-l-4 border-section-reviews pl-4 text-lg font-medium text-white">
+            Software engineer with a knack for pixel art. I ship apps and sites at
+            Xgrid, and I previously built games at Mindstorm Studios.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById("projects")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="neo-pill bg-section-reviews text-sm"
+            >
+              View projects
+            </button>
+            <Link to="/work" className="neo-pill text-sm">
+              Experience
+            </Link>
+            <Link to="/contact" className="neo-pill text-sm">
+              Contact me
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-md">
+          <p className="neo-card absolute -top-4 left-2 z-20 -rotate-6 bg-section-reviews px-3 py-2 text-sm font-black">
+            I see you.
+          </p>
+          <div ref={frameRef} className="@container neo-card relative rotate-1 bg-section-reviews">
+            <img
+              src="/hamza-eyes.jpg"
+              alt="Illustrated portrait of Hamza Momin"
+              className="w-full"
+            />
+            <TrackingEye top="49%" left="39.9%" size="10.5cqw" offset={offset} />
+            <TrackingEye top="46.2%" left="53.4%" size="18cqw" offset={offset} />
+          </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

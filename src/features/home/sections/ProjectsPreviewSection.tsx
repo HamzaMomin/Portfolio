@@ -1,53 +1,38 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { featuredProjects } from "../../../data/projects";
+import { featuredProjects, projectViewUrl } from "../../../data/projects";
+import ProjectTag from "../../../shared/components/ProjectTag";
 import Section from "../../../shared/components/Section";
 
 export default function ProjectsPreviewSection() {
   return (
-    <Section id="projects" subtitle="Projects" title="Selected work">
+    <Section
+      id="projects"
+      subtitle="Projects"
+      title="Selected projects"
+      className="border-y-2 border-black bg-section-projects"
+    >
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {featuredProjects.map((project) => (
-          <article
-            key={project.id}
-            className="group rounded-2xl border border-neutral-200 bg-white p-6 text-left shadow-sm transition-shadow hover:shadow-md"
-          >
-            <h3 className="text-xl font-semibold text-neutral-900">
-              {project.name}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+          <article key={project.id} className="neo-card flex flex-col p-6 text-left">
+            <h3 className="text-xl font-bold text-black">{project.name}</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-black">
               {project.description}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700"
-                >
-                  {tag}
-                </span>
+                <ProjectTag key={tag} tag={tag} />
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
-              {project.demo && (
+            <div className="mt-6 flex flex-wrap gap-3">
+              {projectViewUrl(project) && (
                 <a
-                  href={project.demo}
+                  href={projectViewUrl(project)}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-neutral-900 hover:underline"
+                  className="neo-pill gap-1 text-sm"
                 >
-                  Live demo
-                  <ArrowUpRight size={14} />
-                </a>
-              )}
-              {project.href && (
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-neutral-600 hover:text-neutral-900"
-                >
-                  Source
+                  View
                   <ArrowUpRight size={14} />
                 </a>
               )}
@@ -57,10 +42,7 @@ export default function ProjectsPreviewSection() {
       </div>
 
       <div className="mt-10 text-left">
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:underline"
-        >
+        <Link to="/projects" className="neo-pill neo-pill-filled gap-1 text-sm">
           View all projects
           <ArrowUpRight size={16} />
         </Link>

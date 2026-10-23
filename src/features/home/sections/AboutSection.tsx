@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Section from "../../../shared/components/Section";
 
 export default function AboutSection() {
@@ -5,31 +6,35 @@ export default function AboutSection() {
     <Section
       id="about"
       subtitle="About"
-      title="A little about me"
-      className="bg-neutral-50"
+      title="Software engineer with a knack for pixel art"
+      className="bg-section-about"
     >
-      <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-        <div className="text-left">
-          <p className="text-lg leading-relaxed text-neutral-700">
-            I&apos;m a frontend developer focused on clean UI, responsive
-            layouts, and polished interactions. I enjoy turning ideas into
-            accessible, performant web products.
+      <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-start">
+        <div className="neo-card p-6 text-left md:p-8">
+          <p className="text-lg leading-relaxed text-black">
+            I&apos;m a software engineer who builds products across the web and
+            interactive media. At Xgrid I work on React, WordPress, PHP,
+            Webflow, and Unbounce — including QA and performance work that
+            raised page speed from 60% to 92%.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-neutral-700">
-            This section lives on the home page. You can later make parts of it
-            clickable — for example a resume download, skills list, or a link to
-            a dedicated about page.
+          <p className="mt-4 text-lg leading-relaxed text-black">
+            Before that I apprenticed as a game developer at Mindstorm Studios.
+            I designed and built FooDefender, a 3D pixel-art tower defense game,
+            in one month, and won the Outstanding Art Award at Pakistan&apos;s
+            largest game jam.
           </p>
+          <Link to="/work" className="neo-pill mt-8 text-sm">
+            See experience
+          </Link>
         </div>
 
-        <div className="rounded-2xl border border-neutral-200 bg-white p-6 text-left shadow-sm">
-          <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
-            Quick facts
-          </p>
-          <ul className="mt-4 space-y-3 text-neutral-700">
-            <li>Role: Frontend Developer</li>
-            <li>Focus: React, TypeScript, Tailwind CSS</li>
-            <li>Location: Available for remote work</li>
+        <div className="neo-card p-6 text-left">
+          <p className="neo-sticker">Quick facts</p>
+          <ul className="mt-5 space-y-3 font-medium text-black">
+            <li>Role: Software Engineer</li>
+            <li>Now: Xgrid.co, full-time</li>
+            <li>Focus: web, CMS, APIs, automation, and project management</li>
+            <li>Also: pixel art and game development</li>
           </ul>
         </div>
       </div>

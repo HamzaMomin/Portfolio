@@ -1,19 +1,5 @@
+import { experience } from "../../data/experience";
 import Section from "../../shared/components/Section";
-
-const experience = [
-  {
-    role: "Frontend Developer",
-    company: "Your Company",
-    period: "2024 — Present",
-    summary: "Placeholder work entry — replace with your real experience.",
-  },
-  {
-    role: "Web Developer",
-    company: "Previous Role",
-    period: "2022 — 2024",
-    summary: "Another placeholder role you can expand into a full case study.",
-  },
-];
 
 export default function WorkPage() {
   return (
@@ -21,32 +7,54 @@ export default function WorkPage() {
       id="work-page"
       subtitle="Work"
       title="Experience"
-      className="pt-28"
+      className="bg-section-work pt-28"
     >
-      <p className="mb-10 max-w-2xl text-left text-neutral-600">
-        This is a separate page route. You can link to it from the header or
-        make cards on the home page clickable later.
+      <p className="neo-card mb-10 max-w-2xl p-5 text-left font-medium text-black">
+        Software engineering at Xgrid, from a WordPress internship through
+        full-time product work, plus a game development apprenticeship at
+        Mindstorm Studios.
       </p>
 
-      <div className="space-y-6">
-        {experience.map((item) => (
-          <article
-            key={`${item.company}-${item.role}`}
-            className="rounded-2xl border border-neutral-200 bg-white p-6 text-left shadow-sm md:p-8"
+      <ol className="relative">
+        {experience.map((item, index) => (
+          <li
+            key={`${item.company}-${item.role}-${item.period}`}
+            className="relative pb-8 pl-14 last:pb-0 md:pl-16"
           >
-            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <h2 className="text-xl font-semibold text-neutral-900">
-                {item.role}
-              </h2>
-              <span className="text-sm text-neutral-500">{item.period}</span>
-            </div>
-            <p className="mt-1 text-sm font-medium text-neutral-700">
-              {item.company}
-            </p>
-            <p className="mt-4 text-neutral-600">{item.summary}</p>
-          </article>
+            {index < experience.length - 1 && (
+              <span
+                aria-hidden
+                className="absolute top-10 -bottom-12 left-[7px] w-1 bg-black md:left-[9px]"
+              />
+            )}
+            <span
+              aria-hidden
+              className="absolute top-[30px] left-0 z-10 h-5 w-5 border-[3px] border-black bg-section-reviews"
+            />
+            <span
+              aria-hidden
+              className="absolute top-[38px] left-5 h-1 w-9 bg-black md:w-11"
+            />
+            <article className="neo-card p-6 text-left md:p-8">
+              <div className="flex flex-col gap-3 border-b-2 border-black pb-4 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-black">{item.role}</h2>
+                  <p className="mt-2 inline-block border-2 border-black bg-section-reviews px-3 py-1 text-sm font-bold text-black">
+                    {item.type ? `${item.type} · ` : ""}
+                    {item.company}
+                  </p>
+                </div>
+                <span className="neo-sticker">{item.period}</span>
+              </div>
+              <ul className="mt-4 list-disc space-y-2 pl-5 font-medium text-black">
+                {item.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </article>
+          </li>
         ))}
-      </div>
+      </ol>
     </Section>
   );
 }

@@ -13,12 +13,18 @@
   --color-brand-body: #ffffff;
   --color-brand-footer: #f3f3f3;
 
-  /* Section backgrounds (home scroll / page accents) */
-  --color-section-hero: #1c723f;
-  --color-section-about: #e8f5e9;
-  --color-section-projects: #ead150;
-  --color-section-work: #8489e9;
-  --color-section-contact: #604652;
+  /* Section backgrounds */
+  --color-section-hero: #111111;
+  --color-section-about: #efe7d6;
+  --color-section-projects: #fffdf8;
+  --color-section-reviews: #ffeb3b;
+  --color-section-testimonials: #1c1464;
+  --color-section-certs: #1c723f;
+  --color-section-skills: #111111;
+  --color-section-work: #efe7d6;
+  --color-section-contact: #ffeb3b;
+
+  --shadow-brutal-card: 6px 6px 0 0 var(--color-brand-ink);
 
   /* Neo-brutalist shadows */
   --shadow-brutal: 2px 2px 0 0 var(--color-brand-ink);
@@ -40,7 +46,114 @@
   --header-nav-offset-lg: 7rem;
 }
 
+@keyframes tree-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tree-grow-y {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tree-grow-x {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tree-glow {
+  0%,
+  100% {
+    box-shadow: 4px 4px 0 0 #ffeb3b;
+  }
+  50% {
+    box-shadow: 8px 8px 0 0 #ffffff;
+  }
+}
+
+.skill-tree .tie-line {
+  fill: none;
+  stroke: #3ee0ff;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+@keyframes eye-blink {
+  0%,
+  46%,
+  54%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skill-tree .tree-node {
+    opacity: 0;
+  }
+
+  .skill-tree.is-live .tree-node {
+    animation: tree-pop 0.4s var(--ease-brutal) forwards;
+  }
+
+  .skill-tree.is-live .tree-root {
+    animation:
+      tree-pop 0.4s var(--ease-brutal) forwards,
+      tree-glow 2.6s ease-in-out 1.3s infinite;
+  }
+
+  .skill-tree .tree-v {
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .skill-tree.is-live .tree-v {
+    animation: tree-grow-y 0.35s linear forwards;
+  }
+
+  .skill-tree .tree-h {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  .skill-tree.is-live .tree-h {
+    animation: tree-grow-x 0.5s linear forwards;
+  }
+
+  .skill-tree .tie-line {
+    opacity: 0;
+  }
+
+  .skill-tree.is-live .tie-line {
+    animation: tie-in 0.45s ease forwards;
+    animation-delay: calc(2.2s + var(--tie-i, 0) * 0.04s);
+  }
+}
+
+@keyframes tie-in {
+  to {
+    opacity: 1;
+  }
+}
+
 @layer components {
+  .eye-lid {
+    transform-origin: center;
+    animation: eye-blink 4.6s infinite;
+  }
+
   .neo-pill {
     display: inline-flex;
     align-items: center;
@@ -138,6 +251,51 @@
     transform: translate(4px, -6px);
     border-color: var(--color-brand-accent);
     box-shadow: var(--shadow-brutal-accent);
+  }
+
+  .neo-card {
+    border-radius: 0;
+    border: 3px solid var(--color-brand-ink);
+    background-color: var(--color-brand-surface);
+    box-shadow: var(--shadow-brutal-card);
+  }
+
+  .neo-card.testimonial-fiverr {
+    background-color: #1dbf73;
+  }
+
+  .neo-card.testimonial-upwork {
+    background-color: #ffffff;
+  }
+
+  .neo-card.testimonial-linkedin {
+    background-color: #d7e9ff;
+  }
+
+  .neo-tag {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--color-brand-ink);
+    background-color: var(--color-brand-surface);
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    color: var(--color-brand-ink);
+    box-shadow: 2px 2px 0 0 var(--color-brand-ink);
+  }
+
+  .neo-sticker {
+    display: inline-block;
+    border: 2px solid var(--color-brand-ink);
+    background-color: var(--color-brand-surface);
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brand-ink);
+    box-shadow: 3px 3px 0 0 var(--color-brand-ink);
   }
 
   .neo-panel {

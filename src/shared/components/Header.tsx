@@ -29,7 +29,7 @@ export default function Header() {
       <div className="flex w-full items-center justify-between gap-4 py-5 pl-4 pr-6 md:pl-6 md:pr-8">
         <Link
           to="/"
-          className="neo-badge shrink-0 text-base md:text-lg"
+          className="neo-badge min-w-0 text-sm sm:text-base lg:text-lg"
           onClick={() => setMenuOpen(false)}
         >
           <span className="neo-badge-inner">
@@ -37,7 +37,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden flex-wrap items-center justify-end gap-3 md:flex lg:gap-4">
+        <nav className="ml-auto hidden flex-wrap items-center justify-end gap-3 lg:flex lg:gap-4">
           {mainNav.map((item) =>
             item.type === "route" ? (
               <NavLink
@@ -62,7 +62,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="neo-icon-btn md:hidden"
+          className="neo-icon-btn lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
@@ -72,7 +72,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t-2 border-brand-ink px-6 py-5 md:hidden">
+        <nav className="border-t-2 border-brand-ink px-4 py-5 sm:px-6 lg:hidden">
           <ul className="neo-panel flex flex-col gap-3 p-4">
             <li>
               <Link
