@@ -108,6 +108,38 @@
   }
 }
 
+.eye-pupil {
+  transition:
+    width 0.16s var(--ease-brutal),
+    height 0.16s var(--ease-brutal);
+}
+
+.eye-shut {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform: scaleY(0);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+@keyframes eye-resume-blink {
+  0%,
+  100% {
+    transform: scaleY(0);
+  }
+  40%,
+  58% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eye-shut.is-blinking {
+    animation: eye-resume-blink 0.42s var(--ease-brutal);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .resume-cta {
     animation: resume-joke 1.6s ease-in-out infinite;

@@ -7,11 +7,13 @@ function TrackingEye({
   left,
   size,
   offset,
+  reacting,
 }: {
   top: string;
   left: string;
   size: string;
   offset: { x: number; y: number };
+  reacting: boolean;
 }) {
   return (
     <span
@@ -19,13 +21,14 @@ function TrackingEye({
       style={{ top, left, width: size, height: size }}
     >
       <span
-        className="absolute top-1/2 left-1/2 rounded-full bg-black"
+        className="eye-pupil absolute top-1/2 left-1/2 rounded-full bg-black"
         style={{
-          width: "4.2cqw",
-          height: "4.2cqw",
+          width: reacting ? "6.6cqw" : "4.2cqw",
+          height: reacting ? "6.6cqw" : "4.2cqw",
           transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px))`,
         }}
       />
+      <span aria-hidden className={`eye-shut${reacting ? " is-blinking" : ""}`} />
     </span>
   );
 }
@@ -34,6 +37,7 @@ export default function HeroSection() {
   const frameRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [resumeLook, setResumeLook] = useState(false);
 
   useEffect(() => {
     const onMove = (event: MouseEvent) => {
@@ -92,6 +96,10 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={() => setResumeOpen(true)}
+              onMouseEnter={() => setResumeLook(true)}
+              onMouseLeave={() => setResumeLook(false)}
+              onFocus={() => setResumeLook(true)}
+              onBlur={() => setResumeLook(false)}
               className="neo-pill resume-cta text-sm"
             >
               Resume
@@ -112,8 +120,20 @@ export default function HeroSection() {
               alt="Illustrated portrait of Hamza Momin"
               className="w-full"
             />
-            <TrackingEye top="49%" left="39.9%" size="10.5cqw" offset={offset} />
-            <TrackingEye top="46.2%" left="53.4%" size="18cqw" offset={offset} />
+            <TrackingEye
+              top="49%"
+              left="39.9%"
+              size="10.5cqw"
+              offset={offset}
+              reacting={resumeLook}
+            />
+            <TrackingEye
+              top="46.2%"
+              left="53.4%"
+              size="18cqw"
+              offset={offset}
+              reacting={resumeLook}
+            />
           </div>
         </div>
       </div>
