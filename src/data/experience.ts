@@ -8,7 +8,7 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    role: "Software Engineer",
+    role: "Solutions Engineer",
     type: "Full-time",
     company: "Xgrid.co",
     period: "Sep 2025 – Present",

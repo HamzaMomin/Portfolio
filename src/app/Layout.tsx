@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../shared/components/Footer";
 import Header from "../shared/components/Header";
+import PortfolioLike from "../shared/components/PortfolioLike";
 
 export default function Layout() {
   return (
@@ -10,6 +11,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <PortfolioLike />
     </div>
   );
 }

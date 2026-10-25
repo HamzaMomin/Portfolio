@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import { trackEvent } from '../analytics';
+import { sendContact } from '../lib/mail';
 
 function ContactMe() {
 
@@ -12,23 +12,23 @@ function ContactMe() {
     e.preventDefault();
     setIsSubmitting(true);  // Set submitting state to true
     if (form.current) {
-      emailjs
-        //Service_id      //YOUR_TEMPLATE_ID              //Your_User_ID(Public ID)
-        .sendForm('service_h94tldk', 'template_6w6a00j', form.current, 'FmRbhS07q7oZLbZGT')
-        .then(
-          () => {
-            console.log('SUCCESS!');
-            setIsSubmitting(false);
-            setShowSuccess(true);  // Show success popup after submission
-            setTimeout(() => {
-              setShowSuccess(false);  // Hide success popup after a few seconds
-            }, 3000);
-          },
-          (error) => {
-            console.error('FAILED...', error.text);
-            setIsSubmitting(false);
-          }
-        );
+      const data = new FormData(form.current);
+      sendContact({
+        name: String(data.get('user_name') ?? ''),
+        email: String(data.get('user_email') ?? ''),
+        message: String(data.get('message') ?? ''),
+      })
+        .then(() => {
+          setIsSubmitting(false);
+          setShowSuccess(true);
+          form.current?.reset();
+          setTimeout(() => {
+            setShowSuccess(false);
+          }, 3000);
+        })
+        .catch(() => {
+          setIsSubmitting(false);
+        });
     }
   };
   return (

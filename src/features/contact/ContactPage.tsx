@@ -1,47 +1,44 @@
-import { useRef, useState, type FormEvent } from "react";
-import emailjs from "@emailjs/browser";
+import { useState, type FormEvent } from "react";
 import { trackEvent } from "../../analytics";
+import { sendContact } from "../../lib/mail";
 import Section from "../../shared/components/Section";
 
 const links = [
   { label: "info@hamzamomin.com", href: "mailto:info@hamzamomin.com" },
   { label: "GitHub", href: "https://github.com/HamzaMomin" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/hamzamomin/" },
-  { label: "Fiverr", href: "https://www.fiverr.com/s/yvNKYob" },
+  { label: "Fiverr", href: "https://www.fiverr.com/hamzamomin1?public_mode=true" },
   { label: "Upwork", href: "https://www.upwork.com/freelancers/~01c3ec471b65026c1f?mp_source=share" },
 ];
 
 export default function ContactPage() {
-  const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
 
   const sendEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!form.current) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
     setIsSubmitting(true);
     setStatus("idle");
     trackEvent("clicked_contact", { category: "Contact" });
 
-    emailjs
-      .sendForm(
-        "service_h94tldk",
-        "template_6w6a00j",
-        form.current,
-        "FmRbhS07q7oZLbZGT",
-      )
-      .then(
-        () => {
-          setStatus("sent");
-          form.current?.reset();
-          setIsSubmitting(false);
-        },
-        () => {
-          setStatus("error");
-          setIsSubmitting(false);
-        },
-      );
+    sendContact({
+      name: String(data.get("user_name") ?? ""),
+      email: String(data.get("user_email") ?? ""),
+      message: String(data.get("message") ?? ""),
+    }).then(
+      () => {
+        setStatus("sent");
+        form.reset();
+        setIsSubmitting(false);
+      },
+      () => {
+        setStatus("error");
+        setIsSubmitting(false);
+      },
+    );
   };
 
   return (
@@ -54,7 +51,7 @@ export default function ContactPage() {
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="neo-card p-6 text-left md:p-8">
           <p className="text-lg font-medium text-black">
-            Want to collaborate or hire a software engineer for a project? Send
+            Want to collaborate or hire a solutions engineer for a project? Send
             a note and I&apos;ll get back to you.
           </p>
           <ul className="mt-6 space-y-3">
@@ -73,11 +70,7 @@ export default function ContactPage() {
           </ul>
         </div>
 
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="neo-card p-6 text-left"
-        >
+        <form onSubmit={sendEmail} className="neo-card p-6 text-left">
           <div className="grid gap-4">
             <label className="block text-sm font-bold text-black">
               Name

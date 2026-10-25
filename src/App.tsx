@@ -22,18 +22,18 @@ export default function App() {
   return (
     <>
       <Helmet>
-        <title>Hamza Momin – Software Engineer</title>
+        <title>Hamza Momin – Solutions Engineer</title>
         <meta
           name="description"
-          content="Portfolio of Hamza Momin, a software engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
+          content="Portfolio of Hamza Momin, a solutions engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
         />
         <meta
           property="og:title"
-          content="Hamza Momin – Software Engineer"
+          content="Hamza Momin – Solutions Engineer"
         />
         <meta
           property="og:description"
-          content="Portfolio of Hamza Momin, a software engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
+          content="Portfolio of Hamza Momin, a solutions engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
         />
         <meta property="og:image" content="https://hamzamomin.com/Me.webp" />
         <meta property="og:url" content="https://hamzamomin.com" />
@@ -41,11 +41,11 @@ export default function App() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Hamza Momin – Software Engineer"
+          content="Hamza Momin – Solutions Engineer"
         />
         <meta
           name="twitter:description"
-          content="Portfolio of Hamza Momin, a software engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
+          content="Portfolio of Hamza Momin, a solutions engineer who builds web products, apps, and games — currently at Xgrid, with a knack for pixel art."
         />
         <meta name="twitter:image" content="https://hamzamomin.com/Me.webp" />
       </Helmet>

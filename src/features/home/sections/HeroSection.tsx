@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import ResumeDialog from "../ResumeDialog";
 
 function TrackingEye({
   top,
@@ -32,6 +33,7 @@ function TrackingEye({
 export default function HeroSection() {
   const frameRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     const onMove = (event: MouseEvent) => {
@@ -61,12 +63,12 @@ export default function HeroSection() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="text-left">
-          <p className="neo-sticker mb-6 bg-section-reviews">Software Engineer</p>
+          <p className="neo-sticker mb-6 bg-section-reviews">Solutions Engineer</p>
           <h1 className="max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Hi, I&apos;m Hamza Momin — I build software, from web products to games.
           </h1>
           <p className="mt-6 max-w-xl border-l-4 border-section-reviews pl-4 text-lg font-medium text-white">
-            Software engineer with a knack for pixel art. I ship apps and sites at
+            Solutions engineer with a knack for pixel art. I ship apps and sites at
             Xgrid, and I previously built games at Mindstorm Studios.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -81,17 +83,27 @@ export default function HeroSection() {
             >
               View projects
             </button>
-            <Link to="/work" className="neo-pill text-sm">
+            <Link to="/work" className="neo-pill bg-brand-accent text-sm text-black">
               Experience
             </Link>
             <Link to="/contact" className="neo-pill text-sm">
               Contact me
             </Link>
+            <button
+              type="button"
+              onClick={() => setResumeOpen(true)}
+              className="neo-pill resume-cta text-sm"
+            >
+              Resume
+              <span aria-hidden className="resume-star">
+                ✦
+              </span>
+            </button>
           </div>
         </div>
 
         <div className="relative mx-auto w-full max-w-md">
-          <p className="neo-card absolute -top-4 left-2 z-20 -rotate-6 bg-section-reviews px-3 py-2 text-sm font-black">
+          <p className="neo-card absolute -top-4 left-2 z-20 -rotate-6 bg-brand-accent px-3 py-2 text-sm font-black text-black">
             I see you.
           </p>
           <div ref={frameRef} className="@container neo-card relative rotate-1 bg-section-reviews">
@@ -105,6 +117,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+      {resumeOpen && <ResumeDialog onClose={() => setResumeOpen(false)} />}
     </section>
   );
 }

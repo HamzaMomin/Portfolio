@@ -1,0 +1,19 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "hamza-portfolio-mail",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-25",
+  "workers_dev": true,
+  "rules": [
+    {
+      "type": "Data",
+      "globs": ["**/*.pdf"],
+      "fallthrough": true
+    }
+  ],
+  "vars": {
+    "MAIL_FROM": "Hamza Momin <info@hamzamomin.com>",
+    "CONTACT_TO": "info@hamzamomin.com",
+    "RESUME_PDF_URL": "https://hamzamomin.com/Resume_Hamza_Momin.docx.pdf"
+  }
+}

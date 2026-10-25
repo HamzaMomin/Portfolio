@@ -10,7 +10,7 @@ export default function WorkPage() {
       className="bg-section-work pt-28"
     >
       <p className="neo-card mb-10 max-w-2xl p-5 text-left font-medium text-black">
-        Software engineering at Xgrid, from a WordPress internship through
+        Solutions engineering at Xgrid, from a WordPress internship through
         full-time product work, plus a game development apprenticeship at
         Mindstorm Studios.
       </p>

@@ -15,6 +15,8 @@ interface Box {
 interface TiePath {
   id: string;
   d: string;
+  cross: boolean;
+  skills: [string, string];
 }
 
 function delay(seconds: number) {
@@ -46,131 +48,48 @@ function offsetBox(element: HTMLElement, frame: HTMLElement): Box {
   };
 }
 
-function crosses(obstacles: Box[], x1: number, y1: number, x2: number, y2: number, ignore: Set<string>) {
-  const pad = 1;
-  const left = Math.min(x1, x2) - pad;
-  const right = Math.max(x1, x2) + pad;
-  const top = Math.min(y1, y2) - pad;
-  const bottom = Math.max(y1, y2) + pad;
-
-  return obstacles.some(
-    (box) =>
-      !ignore.has(box.id) &&
-      box.right > left &&
-      box.left < right &&
-      box.bottom > top &&
-      box.top < bottom,
-  );
+function skillBranch(id: string) {
+  return skillTree.find((branch) => branch.skills.some((skill) => skill.id === id))?.id;
 }
 
-function channelLink(
-  a: Box,
-  b: Box,
-  obstacles: Box[],
-  lanes: { top: number; bottom: number }[],
-  origin: number,
-  direction: 1 | -1,
-  limit: number,
-) {
-  const ignore = new Set([a.id, b.id]);
-  const top = Math.min(a.midY, b.midY);
-  const bottom = Math.max(a.midY, b.midY);
-
-  for (let index = 0; index <= lanes.length; index += 1) {
-    const x = origin + direction * index * 5;
-    if (direction === 1 && x > limit) return null;
-    if (direction === -1 && x < limit) return null;
-
-    const lane = lanes[index];
-    if (lane && !(bottom < lane.top - 6 || top > lane.bottom + 6)) continue;
-
-    const fromX = x < a.midX ? a.left : a.right;
-    const toX = x < b.midX ? b.left : b.right;
-    const clear =
-      !crosses(obstacles, fromX, a.midY, x, a.midY, ignore) &&
-      !crosses(obstacles, x, a.midY, x, b.midY, ignore) &&
-      !crosses(obstacles, x, b.midY, toX, b.midY, ignore);
-    if (!clear) return null;
-
-    const next = { top, bottom };
-    if (lane) {
-      lanes[index] = {
-        top: Math.min(lane.top, top),
-        bottom: Math.max(lane.bottom, bottom),
-      };
-    } else {
-      lanes.push(next);
-    }
-    return `M ${fromX} ${a.midY} H ${x} V ${b.midY} H ${toX}`;
-  }
-
-  return null;
-}
-
-function linkPair(a: Box, b: Box, obstacles: Box[], frameWidth: number, lanes: {
-  left: { top: number; bottom: number }[];
-  right: { top: number; bottom: number }[];
-  leftOrigin: number;
-  rightOrigin: number;
-}) {
-  const ignore = new Set([a.id, b.id]);
-  const upper = a.top <= b.top ? a : b;
-  const lower = upper === a ? b : a;
-
-  if (Math.abs(a.midY - b.midY) < 10) {
+function linkCurve(a: Box, b: Box) {
+  if (Math.abs(a.midY - b.midY) < 14) {
     const left = a.left <= b.left ? a : b;
     const right = left === a ? b : a;
-    if (!crosses(obstacles, left.right, left.midY, right.left, right.midY, ignore)) {
-      return `M ${left.right - 1} ${left.midY} H ${right.left + 1}`;
-    }
-    return null;
+    const midX = (left.right + right.left) / 2;
+    const lift = Math.max(28, (right.left - left.right) * 0.25);
+    return `M ${left.right} ${left.midY} Q ${midX} ${left.top - lift}, ${right.left} ${right.midY}`;
   }
 
-  const shared = Math.min(a.right, b.right) - Math.max(a.left, b.left);
-  const sharedX = (Math.max(a.left, b.left) + Math.min(a.right, b.right)) / 2;
-  if (shared > 16 && !crosses(obstacles, sharedX, upper.bottom, sharedX, lower.top, ignore)) {
-    return `M ${sharedX} ${upper.bottom - 1} V ${lower.top + 1}`;
-  }
-
-  const gap = lower.top - upper.bottom;
-  if (gap > 4 && gap < 28 && Math.abs(upper.midX - lower.midX) < 200) {
-    const gapY = upper.bottom + gap / 2;
-    const clear =
-      !crosses(obstacles, upper.midX, upper.bottom, upper.midX, gapY, ignore) &&
-      !crosses(obstacles, upper.midX, gapY, lower.midX, gapY, ignore) &&
-      !crosses(obstacles, lower.midX, gapY, lower.midX, lower.top, ignore);
-    if (clear) {
-      return `M ${upper.midX} ${upper.bottom - 1} V ${gapY} H ${lower.midX} V ${lower.top + 1}`;
-    }
-  }
-
-  return (
-    channelLink(a, b, obstacles, lanes.left, lanes.leftOrigin, -1, 8) ??
-    channelLink(a, b, obstacles, lanes.right, lanes.rightOrigin, 1, frameWidth - 8)
-  );
+  const upper = a.midY <= b.midY ? a : b;
+  const lower = upper === a ? b : a;
+  const midY = (upper.bottom + lower.top) / 2;
+  return `M ${upper.midX} ${upper.bottom} C ${upper.midX} ${midY}, ${lower.midX} ${midY}, ${lower.midX} ${lower.top}`;
 }
 
-function measureTies(frame: HTMLElement): TiePath[] {
+function measureTies(frame: HTMLElement, activeId: string | null): TiePath[] {
+  if (!activeId) return [];
+
   const boxes = [...frame.querySelectorAll<HTMLElement>("[data-node]")].map((element) =>
     offsetBox(element, frame),
   );
   const byId = new Map(boxes.map((box) => [box.id, box]));
-  const branchIds = new Set(skillTree.map((branch) => branch.id).concat("root"));
-  const skills = boxes.filter((box) => !branchIds.has(box.id));
-  if (skills.length < 2) return [];
-
-  const lanes = {
-    left: [] as { top: number; bottom: number }[],
-    right: [] as { top: number; bottom: number }[],
-    leftOrigin: Math.min(...skills.map((box) => box.left)) - 12,
-    rightOrigin: Math.max(...skills.map((box) => box.right)) + 12,
-  };
+  const active = byId.get(activeId);
+  if (!active) return [];
 
   return skillTies.flatMap((tie) => {
-    const [first, second] = tie.skills.map((id) => byId.get(id));
-    if (!first || !second) return [];
-    const d = linkPair(first, second, boxes, frame.clientWidth, lanes);
-    return d ? [{ id: tie.id, d }] : [];
+    if (!tie.skills.includes(activeId)) return [];
+    const otherId = tie.skills.find((id) => id !== activeId);
+    const other = otherId ? byId.get(otherId) : undefined;
+    if (!other) return [];
+    return [
+      {
+        id: tie.id,
+        d: linkCurve(active, other),
+        cross: skillBranch(tie.skills[0]) !== skillBranch(tie.skills[1]),
+        skills: [activeId, other.id] as [string, string],
+      },
+    ];
   });
 }
 
@@ -179,25 +98,54 @@ function Node({
   nodeId,
   seconds,
   tone,
+  emphasis = "none",
+  onPick,
 }: {
   label: string;
   nodeId: string;
   seconds: number;
   tone: "root" | "branch" | "leaf";
+  emphasis?: "none" | "active" | "cross" | "same" | "dim";
+  onPick?: (id: string, fromClick: boolean) => void;
 }) {
   const size =
     tone === "root"
-      ? "tree-root bg-section-reviews px-4 py-3 text-base font-black sm:text-lg"
+      ? "tree-root whitespace-nowrap bg-section-reviews px-3 py-2 text-sm font-black"
       : tone === "branch"
         ? "bg-white px-3 py-2 text-sm font-black"
         : "bg-white px-2 py-1 text-xs font-bold sm:text-sm";
+  const glow =
+    emphasis === "active"
+      ? "shadow-[3px_3px_0_0_#fff]"
+      : emphasis === "cross"
+        ? "shadow-[3px_3px_0_0_#ff4911]"
+        : emphasis === "same"
+          ? "shadow-[3px_3px_0_0_#3ee0ff]"
+          : emphasis === "dim"
+            ? "opacity-40 shadow-[3px_3px_0_0_#ffeb3b]"
+            : "shadow-[3px_3px_0_0_#ffeb3b]";
+  const className = `tree-node relative z-10 inline-flex max-w-full border-2 border-black text-left text-black transition-opacity ${glow} ${size}`;
+
+  if (tone === "leaf") {
+    return (
+      <button
+        type="button"
+        data-node={nodeId}
+        className={`${className} cursor-pointer`}
+        style={delay(seconds)}
+        onMouseEnter={() => {
+          if (window.matchMedia("(pointer: coarse)").matches) return;
+          onPick?.(nodeId, false);
+        }}
+        onClick={() => onPick?.(nodeId, true)}
+      >
+        {label}
+      </button>
+    );
+  }
 
   return (
-    <span
-      data-node={nodeId}
-      className={`tree-node relative z-10 inline-flex max-w-full border-2 border-black text-left text-black shadow-[3px_3px_0_0_#ffeb3b] ${size}`}
-      style={delay(seconds)}
-    >
+    <span data-node={nodeId} className={className} style={delay(seconds)}>
       {label}
     </span>
   );
@@ -206,13 +154,31 @@ function Node({
 export default function SkillTreeSection() {
   const frameRef = useRef<HTMLDivElement>(null);
   const [live, setLive] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [ties, setTies] = useState<TiePath[]>([]);
+
+  const linked = new Map<string, "cross" | "same">();
+  if (activeId) {
+    for (const tie of skillTies) {
+      if (!tie.skills.includes(activeId)) continue;
+      const otherId = tie.skills.find((id) => id !== activeId);
+      if (!otherId) continue;
+      const cross = skillBranch(tie.skills[0]) !== skillBranch(tie.skills[1]);
+      linked.set(otherId, cross ? "cross" : "same");
+    }
+  }
+
+  const pickSkill = (id: string, fromClick: boolean) => {
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (fromClick && !coarse) return;
+    setActiveId((current) => (fromClick && current === id ? null : id));
+  };
 
   useEffect(() => {
     const frame = frameRef.current;
     if (!frame) return;
 
-    const measure = () => setTies(measureTies(frame));
+    const measure = () => setTies(measureTies(frame, activeId));
     measure();
 
     const resizeObserver = new ResizeObserver(measure);
@@ -233,7 +199,7 @@ export default function SkillTreeSection() {
       intersectionObserver.disconnect();
       frame.removeEventListener("animationend", measure);
     };
-  }, []);
+  }, [activeId]);
 
   return (
     <Section
@@ -246,12 +212,15 @@ export default function SkillTreeSection() {
       <div
         ref={frameRef}
         className={`skill-tree relative flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-0 ${live ? "is-live" : ""}`}
+        onMouseLeave={() => {
+          if (!window.matchMedia("(pointer: coarse)").matches) setActiveId(null);
+        }}
       >
         <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" aria-hidden>
           {ties.map((tie, index) => (
             <path
               key={tie.id}
-              className="tie-line"
+              className={tie.cross ? "tie-line tie-line-cross" : "tie-line"}
               d={tie.d}
               pathLength={1}
               style={{ ["--tie-i" as string]: index }}
@@ -259,8 +228,8 @@ export default function SkillTreeSection() {
           ))}
         </svg>
 
-        <div className="flex justify-center lg:w-52 lg:shrink-0 lg:justify-start">
-          <Node label="Software Engineer" nodeId="root" seconds={0.05} tone="root" />
+        <div className="flex justify-center lg:w-auto lg:shrink-0 lg:justify-start">
+          <Node label="Solutions Engineer" nodeId="root" seconds={0.05} tone="root" />
         </div>
 
         <div className="flex justify-center lg:hidden">
@@ -297,6 +266,14 @@ export default function SkillTreeSection() {
                         nodeId={skill.id}
                         seconds={branchAt + 0.12 + skillIndex * 0.035}
                         tone="leaf"
+                        emphasis={
+                          !activeId
+                            ? "none"
+                            : skill.id === activeId
+                              ? "active"
+                              : linked.get(skill.id) ?? "dim"
+                        }
+                        onPick={pickSkill}
                       />
                     </li>
                   ))}
@@ -307,10 +284,23 @@ export default function SkillTreeSection() {
         </div>
       </div>
 
-      <p className="mt-8 flex items-center gap-2 text-sm font-bold text-white">
-        <span className="inline-block h-0.5 w-8 bg-[#3ee0ff]" />
-        Blue lines join skills that are used together
+      <p className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold text-white">
+        <span>Point at a skill to see where it connects.</span>
+        <span className="inline-flex items-center gap-2">
+          <span className="inline-block h-0.5 w-8 bg-[#3ee0ff]" />
+          Same group
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <span className="inline-block h-0.5 w-8 bg-brand-accent" />
+          Across groups
+        </span>
       </p>
+      {activeId && (
+        <p className="mt-3 text-sm font-bold text-white">
+          {skillLabel(activeId)} connects to{" "}
+          {[...linked.keys()].map(skillLabel).join(", ")}.
+        </p>
+      )}
       <ul className="sr-only">
         {skillTies.map((tie) => (
           <li key={tie.id}>{tie.skills.map(skillLabel).join(", ")}</li>
