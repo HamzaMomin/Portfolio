@@ -10,13 +10,23 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "savesquare",
+    name: "SaveSquare",
+    description:
+      "An AI bookmark manager that files saved links into folders and shares a collection with one link.",
+    tags: ["Browser extension", "AI", "Chrome", "Edge"],
+    href: "https://savesquare.io/",
+    demo: "https://savesquare.io/",
+    featured: true,
+  },
+  {
     id: "phostrack",
     name: "Phostrack",
     description: "A mobile app and landing page for phosphorus tracking.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Cloudflare", "Hugging Face"],
     href: "https://github.com/HamzaMomin/phostrack.com",
     demo: "https://phostrack.com/",
-    featured: true,
+    featured: false,
   },
   {
     id: "insignia",

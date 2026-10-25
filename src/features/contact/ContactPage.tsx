@@ -1,14 +1,76 @@
-import { useState, type FormEvent } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { trackEvent } from "../../analytics";
 import { sendContact } from "../../lib/mail";
 import Section from "../../shared/components/Section";
 
-const links = [
-  { label: "info@hamzamomin.com", href: "mailto:info@hamzamomin.com" },
-  { label: "GitHub", href: "https://github.com/HamzaMomin" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/hamzamomin/" },
-  { label: "Fiverr", href: "https://www.fiverr.com/hamzamomin1?public_mode=true" },
-  { label: "Upwork", href: "https://www.upwork.com/freelancers/~01c3ec471b65026c1f?mp_source=share" },
+function FiverrMark() {
+  return (
+    <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
+      <circle cx="16" cy="16" r="16" fill="#111111" />
+      <path
+        fill="#7dffc3"
+        d="M20.2 7.4h-4.2c-3.2 0-5.3 2-5.6 5.2H7.6v3.4h2.8V25h3.8v-9H17v-3.4h-2.6c.3-1.4 1.2-2 2.5-2h3.3V7.4z"
+      />
+    </svg>
+  );
+}
+
+function UpworkMark() {
+  return (
+    <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
+      <circle cx="16" cy="16" r="16" fill="#14a800" />
+      <text
+        x="16"
+        y="21"
+        textAnchor="middle"
+        fill="#ffffff"
+        fontFamily="Arial, sans-serif"
+        fontSize="13"
+        fontWeight="700"
+      >
+        Up
+      </text>
+    </svg>
+  );
+}
+
+const links: { label: string; detail: string; href: string; tone: string; icon: ReactNode }[] = [
+  {
+    label: "Email",
+    detail: "info@hamzamomin.com",
+    href: "mailto:info@hamzamomin.com",
+    tone: "bg-white",
+    icon: <Mail size={22} strokeWidth={2.5} aria-hidden />,
+  },
+  {
+    label: "GitHub",
+    detail: "github.com/HamzaMomin",
+    href: "https://github.com/HamzaMomin",
+    tone: "bg-[#f4f4f4]",
+    icon: <Github size={22} strokeWidth={2.5} aria-hidden />,
+  },
+  {
+    label: "LinkedIn",
+    detail: "linkedin.com/in/hamzamomin",
+    href: "https://www.linkedin.com/in/hamzamomin/",
+    tone: "bg-[#d7e9ff]",
+    icon: <Linkedin size={22} strokeWidth={2.5} aria-hidden />,
+  },
+  {
+    label: "Fiverr",
+    detail: "fiverr.com/hamzamomin1",
+    href: "https://www.fiverr.com/hamzamomin1?public_mode=true",
+    tone: "bg-[#1dbf73]",
+    icon: <FiverrMark />,
+  },
+  {
+    label: "Upwork",
+    detail: "Hire me on Upwork",
+    href: "https://www.upwork.com/freelancers/~01c3ec471b65026c1f?mp_source=share",
+    tone: "bg-white",
+    icon: <UpworkMark />,
+  },
 ];
 
 export default function ContactPage() {
@@ -49,7 +111,7 @@ export default function ContactPage() {
       className="bg-section-contact pt-28"
     >
       <div className="grid gap-8 lg:grid-cols-2">
-        <div className="neo-card p-6 text-left md:p-8">
+        <div className="text-left">
           <p className="text-lg font-medium text-black">
             Want to collaborate or hire a solutions engineer for a project? Send
             a note and I&apos;ll get back to you.
@@ -61,9 +123,13 @@ export default function ContactPage() {
                   href={link.href}
                   target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                  className="font-bold text-black underline decoration-2 underline-offset-4"
+                  className={`neo-card flex items-center gap-3 px-4 py-3 transition-transform hover:-translate-y-1 hover:translate-x-1 ${link.tone}`}
                 >
-                  {link.label}
+                  <span className="neo-icon-btn shrink-0">{link.icon}</span>
+                  <span>
+                    <span className="block text-sm font-black text-black">{link.label}</span>
+                    <span className="block text-sm font-medium text-black">{link.detail}</span>
+                  </span>
                 </a>
               </li>
             ))}

@@ -103,7 +103,7 @@ export default function HeroSection() {
         </div>
 
         <div className="relative mx-auto w-full max-w-md">
-          <p className="neo-card absolute -top-4 left-2 z-20 -rotate-6 bg-brand-accent px-3 py-2 text-sm font-black text-black">
+          <p className="neo-card pixel-text absolute -top-4 left-2 z-20 -rotate-6 bg-brand-accent px-3 py-2 text-sm text-black">
             I see you.
           </p>
           <div ref={frameRef} className="@container neo-card relative rotate-1 bg-section-reviews">
