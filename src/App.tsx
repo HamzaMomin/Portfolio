@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { initGA, trackPageView } from "./analytics";
 import Layout from "./app/Layout";
@@ -7,6 +7,24 @@ import ContactPage from "./features/contact/ContactPage";
 import HomePage from "./features/home/HomePage";
 import ProjectsPage from "./features/projects/ProjectsPage";
 import WorkPage from "./features/work/WorkPage";
+
+const legacyRedirects: Record<string, string> = {
+  "/about": "/",
+  "/About": "/",
+  "/aboutme": "/",
+  "/resume": "/",
+  "/Resume": "/",
+  "/Work": "/work",
+  "/Projects": "/projects",
+  "/ContactMe": "/contact",
+  "/Certs": "/",
+  "/PixelArt": "/",
+};
+
+function UnknownRoute() {
+  const { pathname } = useLocation();
+  return <Navigate to={legacyRedirects[pathname] ?? "/"} replace />;
+}
 
 export default function App() {
   const location = useLocation();
@@ -52,10 +70,11 @@ export default function App() {
 
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/work" element={<WorkPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/" element={<HomePage />} caseSensitive />
+          <Route path="/projects" element={<ProjectsPage />} caseSensitive />
+          <Route path="/work" element={<WorkPage />} caseSensitive />
+          <Route path="/contact" element={<ContactPage />} caseSensitive />
+          <Route path="*" element={<UnknownRoute />} />
         </Route>
       </Routes>
     </>
