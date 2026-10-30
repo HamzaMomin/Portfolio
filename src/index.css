@@ -1,106 +1,39 @@
 @import "tailwindcss";
+@import "./styles/theme.css";
 
 :root {
-  margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
-  font-family: "Lexend", sans-serif;
- 
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  text-align: left;
+  color: var(--color-brand-ink);
+  background-color: var(--color-brand-body);
 }
 
 body {
-    background-color: #1C723F;
-  }
-
-
-#hackerText {
-  font-family: "Poppins", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-brand-body);
 }
 
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
+#root {
+  min-height: 100vh;
 }
 
-.animate-marquee {
-  display: flex;
-  animation: marquee 10s linear infinite;
-  width: max-content;
+html {
+  scroll-behavior: smooth;
 }
 
-
-
-
-@Media (max-width: 470px) {
-
-  body {
-    background-color: #1C723F;
-  }
-
-  #About {
-    padding: 0px 24px !important;
-
-  }
-
-  #Work {
-    padding: 0px 24px !important;
-
-  }
-
-  #ContactMe {
-    padding: 0px 24px !important;
-    margin-bottom: 24px;
-  }
-
-  .BackSVG2 {
-    width: 70% !important;
-    height: 100px !important;
-
-  }
-
-
-
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
-
-.StarSVG {
-  animation: rotate-clockwise 6s linear infinite;
+.hacker-text,
+.neo-sticker,
+.pixel-text {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.02em;
 }
-
-@keyframes rotate-clockwise {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-.animate-float {
-  animation: float 2s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-    /* Adjust the distance for the float effect */
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-
