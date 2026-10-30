@@ -4,6 +4,7 @@ interface SectionProps {
   id: string;
   title?: string;
   subtitle?: string;
+  titleClassName?: string;
   children: ReactNode;
   className?: string;
   /** Light text for dark section backgrounds. */
@@ -14,6 +15,7 @@ export default function Section({
   id,
   title,
   subtitle,
+  titleClassName = "",
   children,
   className = "",
   light = false,
@@ -29,7 +31,7 @@ export default function Section({
             {subtitle && <p className="neo-sticker mb-4">{subtitle}</p>}
             {title && (
               <h2
-                className={`text-3xl font-bold tracking-tight sm:text-4xl ${light ? "text-white" : "text-black"}`}
+                className={`text-3xl font-bold tracking-tight sm:text-4xl ${light ? "text-white" : "text-black"} ${titleClassName}`}
               >
                 {title}
               </h2>

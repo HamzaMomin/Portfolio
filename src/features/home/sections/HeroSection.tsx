@@ -8,13 +8,17 @@ function TrackingEye({
   size,
   offset,
   reacting,
+  wink,
 }: {
   top: string;
   left: string;
   size: string;
   offset: { x: number; y: number };
   reacting: boolean;
+  wink?: boolean;
 }) {
+  const look = reacting ? { x: -10, y: -4 } : offset;
+
   return (
     <span
       className="absolute z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-[3px] border-black bg-white"
@@ -23,12 +27,14 @@ function TrackingEye({
       <span
         className="eye-pupil absolute top-1/2 left-1/2 rounded-full bg-black"
         style={{
-          width: reacting ? "6.6cqw" : "4.2cqw",
-          height: reacting ? "6.6cqw" : "4.2cqw",
-          transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px))`,
+          width: reacting ? "5.2cqw" : "4.2cqw",
+          height: reacting ? "5.2cqw" : "4.2cqw",
+          transform: `translate(calc(-50% + ${look.x}px), calc(-50% + ${look.y}px))`,
         }}
-      />
-      <span aria-hidden className={`eye-shut${reacting ? " is-blinking" : ""}`} />
+      >
+        <span className="eye-shine" />
+      </span>
+      {wink && <span aria-hidden className={`eye-wink${reacting ? " is-winking" : ""}`} />}
     </span>
   );
 }
@@ -67,15 +73,17 @@ export default function HeroSection() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="text-left">
-          <p className="neo-sticker mb-6 bg-section-reviews">Solutions Engineer</p>
+          <p className="neo-sticker mb-6 bg-section-reviews">Full-stack web developer</p>
           <h1 className="max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Hi, I&apos;m Hamza Momin — I build software, from web products to games.
+            Hi, I&apos;m Hamza Momin. I build fast websites and SaaS products.
           </h1>
           <p className="mt-6 max-w-xl border-l-4 border-section-reviews pl-4 text-lg font-medium text-white">
-            Solutions engineer with a knack for pixel art. I ship apps and sites at
-            Xgrid, and I previously built games at Mindstorm Studios.
+            Developer by trade, artist at heart. I&apos;ve always been curious about
+            how things work and how to make them beautiful, so I build software
+            with an eye for detail and a love for good design. When I&apos;m not
+            coding, you&apos;ll find me drawing or dreaming up the next SaaS idea.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-2 lg:flex lg:flex-nowrap [&_.neo-pill]:w-full [&_.neo-pill]:whitespace-nowrap [&_.neo-pill]:px-3 lg:[&_.neo-pill]:w-auto">
             <button
               type="button"
               onClick={() =>
@@ -91,7 +99,7 @@ export default function HeroSection() {
               Experience
             </Link>
             <Link to="/contact" className="neo-pill text-sm">
-              Contact me
+              Hire me
             </Link>
             <button
               type="button"
@@ -108,11 +116,14 @@ export default function HeroSection() {
               </span>
             </button>
           </div>
+          <p className="mt-4 text-sm font-medium text-white">
+            Open to remote contract work · Islamabad, Pakistan (UTC+5)
+          </p>
         </div>
 
         <div className="relative mx-auto w-full max-w-md">
           <p className="neo-card pixel-text absolute -top-4 left-2 z-20 -rotate-6 bg-brand-accent px-3 py-2 text-sm text-black">
-            I see you.
+            I SEE YOU.
           </p>
           <div ref={frameRef} className="@container neo-card relative rotate-1 bg-section-reviews">
             <img
@@ -126,6 +137,7 @@ export default function HeroSection() {
               size="10.5cqw"
               offset={offset}
               reacting={resumeLook}
+              wink
             />
             <TrackingEye
               top="46.2%"

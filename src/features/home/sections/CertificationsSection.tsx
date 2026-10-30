@@ -8,9 +8,7 @@ export default function CertificationsSection() {
     <Section
       id="certs"
       subtitle="Certifications"
-      title="Credentials"
       className="bg-section-certs text-white"
-      light
     >
       <NeoSlider label="certifications">
         {certifications.map((cert) => (

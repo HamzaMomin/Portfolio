@@ -99,6 +99,7 @@ function Node({
   seconds,
   tone,
   emphasis = "none",
+  scanning = false,
   onPick,
 }: {
   label: string;
@@ -106,6 +107,7 @@ function Node({
   seconds: number;
   tone: "root" | "branch" | "leaf";
   emphasis?: "none" | "active" | "cross" | "same" | "dim";
+  scanning?: boolean;
   onPick?: (id: string, fromClick: boolean) => void;
 }) {
   const size =
@@ -131,7 +133,7 @@ function Node({
       <button
         type="button"
         data-node={nodeId}
-        className={`${className} cursor-pointer`}
+        className={`${className} cursor-pointer${scanning ? " is-scan" : ""}`}
         style={delay(seconds)}
         onMouseEnter={() => {
           if (window.matchMedia("(pointer: coarse)").matches) return;
@@ -151,10 +153,13 @@ function Node({
   );
 }
 
+const leafIds = skillTree.flatMap((branch) => branch.skills.map((skill) => skill.id));
+
 export default function SkillTreeSection() {
   const frameRef = useRef<HTMLDivElement>(null);
   const [live, setLive] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [scanIndex, setScanIndex] = useState(0);
   const [ties, setTies] = useState<TiePath[]>([]);
 
   const linked = new Map<string, "cross" | "same">();
@@ -175,6 +180,17 @@ export default function SkillTreeSection() {
   };
 
   useEffect(() => {
+    if (!live || activeId) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(() => {
+      setScanIndex((index) => (index + 1) % leafIds.length);
+    }, 650);
+
+    return () => window.clearInterval(timer);
+  }, [live, activeId]);
+
+  useEffect(() => {
     const frame = frameRef.current;
     if (!frame) return;
 
@@ -190,7 +206,7 @@ export default function SkillTreeSection() {
       ([entry]) => {
         if (entry.isIntersecting) setLive(true);
       },
-      { threshold: 0.2 },
+      { threshold: 0.08 },
     );
     intersectionObserver.observe(frame);
 
@@ -205,7 +221,6 @@ export default function SkillTreeSection() {
     <Section
       id="skills"
       subtitle="Skills"
-      title="Skill tree"
       className="bg-section-skills"
       light
     >
@@ -229,7 +244,7 @@ export default function SkillTreeSection() {
         </svg>
 
         <div className="flex justify-center lg:w-auto lg:shrink-0 lg:justify-start">
-          <Node label="Solutions Engineer" nodeId="root" seconds={0.05} tone="root" />
+          <Node label="Software Engineer" nodeId="root" seconds={0.05} tone="root" />
         </div>
 
         <div className="flex justify-center lg:hidden">
@@ -266,6 +281,7 @@ export default function SkillTreeSection() {
                         nodeId={skill.id}
                         seconds={branchAt + 0.12 + skillIndex * 0.035}
                         tone="leaf"
+                        scanning={!activeId && skill.id === leafIds[scanIndex]}
                         emphasis={
                           !activeId
                             ? "none"

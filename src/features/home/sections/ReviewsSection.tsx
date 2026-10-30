@@ -64,9 +64,8 @@ export default function ReviewsSection() {
   return (
     <Section
       id="reviews"
-      title="Testimonials"
+      subtitle="Testimonials"
       className="bg-section-testimonials"
-      light
     >
       <NeoSlider label="testimonials" perView={{ base: 1, md: 2, lg: 3 }} fitVisible>
         {reviews.map((review) => (

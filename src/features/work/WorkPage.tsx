@@ -5,16 +5,9 @@ export default function WorkPage() {
   return (
     <Section
       id="work-page"
-      subtitle="Work"
-      title="Experience"
+      subtitle="Work Experience"
       className="bg-section-work pt-28"
     >
-      <p className="neo-card mb-10 max-w-2xl p-5 text-left font-medium text-black">
-        Solutions engineering at Xgrid, from a WordPress internship through
-        full-time product work, plus a game development apprenticeship at
-        Mindstorm Studios.
-      </p>
-
       <ol className="relative">
         {experience.map((item, index) => (
           <li
@@ -38,11 +31,14 @@ export default function WorkPage() {
             <article className="neo-card p-6 text-left md:p-8">
               <div className="flex flex-col gap-3 border-b-2 border-black pb-4 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <h2 className="text-xl font-bold text-black">{item.role}</h2>
-                  <p className="mt-2 inline-block border-2 border-black bg-section-reviews px-3 py-1 text-sm font-bold text-black">
-                    {item.type ? `${item.type} · ` : ""}
-                    {item.company}
-                  </p>
+                  <h2 className="text-xl font-bold text-black">
+                    {item.role} | {item.type}
+                  </h2>
+                  {item.company && (
+                    <p className="mt-2 inline-block border-2 border-black bg-section-reviews px-3 py-1 text-sm font-bold text-black">
+                      {item.company}
+                    </p>
+                  )}
                 </div>
                 <span className="neo-sticker">{item.period}</span>
               </div>

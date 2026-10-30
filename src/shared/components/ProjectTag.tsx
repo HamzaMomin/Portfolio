@@ -21,6 +21,20 @@ const tagColors: Record<string, string> = {
   Webflow: "#c5dcff",
   GSAP: "#9ef0b5",
   "Responsive layout": "#ffe7a3",
+  WordPress: "#c8ddff",
+  Avada: "#ffd0b8",
+  BEM: "#e7e0ff",
+  HubSpot: "#ffc9b0",
+  ACF: "#d5f0ff",
+  "Rank Math": "#ffe39a",
+  "Next.js": "#d9d9d9",
+  WXT: "#c6f6d5",
+  Supabase: "#b6f3c8",
+  "Cloudflare Workers": "#ffe7a8",
+  Creem: "#ffd6ea",
+  WooCommerce: "#d4c4ff",
+  "Bricks Builder": "#ffd8a8",
+  PHP: "#c5d4ff",
 };
 
 const fallbackColors = ["#ffd6e0", "#d6f5ff", "#e4ffb8", "#ffe7c2", "#e6d6ff", "#c8fff4"];

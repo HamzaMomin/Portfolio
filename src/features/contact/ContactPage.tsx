@@ -44,6 +44,13 @@ const links: { label: string; detail: string; href: string; tone: string; icon: 
     icon: <Mail size={22} strokeWidth={2.5} aria-hidden />,
   },
   {
+    label: "Email",
+    detail: "hamzamomin5@gmail.com",
+    href: "mailto:hamzamomin5@gmail.com",
+    tone: "bg-white",
+    icon: <Mail size={22} strokeWidth={2.5} aria-hidden />,
+  },
+  {
     label: "GitHub",
     detail: "github.com/HamzaMomin",
     href: "https://github.com/HamzaMomin",
@@ -113,7 +120,7 @@ export default function ContactPage() {
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="text-left">
           <p className="text-lg font-medium text-black">
-            Want to collaborate or hire a solutions engineer for a project? Send
+            Want to collaborate or hire a software engineer for a project? Send
             a note and I&apos;ll get back to you.
           </p>
           <ul className="mt-6 space-y-3">

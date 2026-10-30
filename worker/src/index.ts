@@ -1,4 +1,4 @@
-import resumePdf from "../../public/Resume_Hamza_Momin.docx.pdf";
+import resumePdf from "../../public/Hamza-Momin-Web-Developer-Resume.pdf";
 
 interface Env {
   RESEND_API_KEY: string;
@@ -64,7 +64,7 @@ async function sendResume(body: unknown, env: Env) {
     html: "<p>Thanks for asking. My resume is attached.</p><p>— Hamza</p>",
     attachments: [
       {
-        filename: "Resume_Hamza_Momin.pdf",
+        filename: "Hamza-Momin-Web-Developer-Resume.pdf",
         content: bytesToBase64(resumePdf),
       },
     ],
